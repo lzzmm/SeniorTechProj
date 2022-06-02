@@ -1,0 +1,280 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>羽毛球场预约</title>
+    <script src="js/menu.js"></script>
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/nav.css">
+    <link rel="stylesheet" href="css/subnav.css">
+    <link rel="stylesheet" href="css/indexline.css">
+    <link rel="stylesheet" href="css/colsleft.css">
+    <!-- <link rel="stylesheet" href="css/cols02.css"> -->
+    <link rel="stylesheet" href="css/quicklinks.css">
+    <link rel="stylesheet" href="css/sublinks.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <style>
+        table {
+            /* border-collapse: collapse */
+            border-color: #FFFFFF;
+            color: #FFF;
+            margin: 0 auto;
+        }
+
+        td,
+        th {
+            height: 40px;
+            width: 240px;
+            text-align: center
+        }
+
+        caption {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            color: #000000;
+            font-size: 12px;
+            margin: 0px;
+            padding: 0px;
+            background: #000000;
+        }
+
+        p {
+            margin: 0px;
+            padding: 0px;
+        }
+
+
+
+        /* frame */
+        #header {
+            width: 998px;
+            height: 108px;
+
+            margin: 0px auto;
+            position: relative;
+            padding: 0px;
+        }
+
+        #nav {
+            width: 998px;
+            height: 45px;
+
+            font-size: 14px;
+            color: #FFF;
+
+            margin: 0 auto;
+            padding: 0px;
+
+            font-weight: bold;
+            line-height: 45px;
+            text-align: center;
+        }
+
+        #subnav {
+            width: 998px;
+            height: 41px;
+
+            font-size: 13px;
+            margin: 0 auto;
+            text-align: left;
+            color: #006600;
+            line-height: 40px;
+        }
+
+        #main {
+            background-color: #FFFFFF;
+
+            overflow: hidden;
+            padding: 0px 0px 5px 0px;
+        }
+
+        #mainbody {
+            width: 998px;
+            height: 700px;
+
+            margin: 0px auto;
+            padding: 2px;
+        }
+
+        #quicklinks {
+            width: 998px;
+            height: 20px;
+
+            font-size: 14px;
+            color: #000000;
+            background: #D1D1D1;
+
+            padding: 12px 0px 7px 0px;
+            margin: 0px auto;
+            word-spacing: 5px;
+            font-weight: bold;
+        }
+
+        #sublinks {
+            width: 958px;
+            height: 20px;
+
+            font-size: 12px;
+            color: #000000;
+            background: #D1D1D1;
+
+            padding: 10px 20px;
+            margin: 0px auto;
+            word-spacing: 6px;
+        }
+
+
+        #footer {
+            width: 958px;
+            height: 85px;
+
+            font-size: 12px;
+            color: #FFFFFF;
+
+            padding: 20px 20px;
+            margin: 0px auto;
+            height: 105px;
+        }
+
+        /* frame end */
+    </style>
+</head>
+
+<body>
+    <div id="header">
+        <!-- <div id="logo">
+            <img src="images/logo.jpg" alt="中山大学">
+        </div> -->
+        <div id="version">
+            <a href="../en/index.htm">
+                <img src="images/header1.png" alt="体育场馆在线预约系统" border="0"></a>
+        </div>
+    </div>
+    <!--header end-->
+
+    <div id="nav">
+        <!-- <a href="index.htm"><span class="home">&nbsp;</span></a> -->
+        <a href="zdgk/index.htm"><span class="sp" id="tag2"
+                onmouseover="switchTag('tag2','subnav2');this.blur();">首页</span></a>
+        <a href="yx/index.htm"><span class="sp" id="tag3"
+                onmouseover="switchTag('tag3','subnav3');this.blur();">预订中心</span></a>
+        <!-- <a href="xksz/index.htm"><span class="sp" id="tag4"
+                onmouseover="switchTag('tag4','subnav4');this.blur();">团体预订</span></a> -->
+        <a href="jyjx/index.htm"><span class="sp" id="tag5"
+                onmouseover="switchTag('tag5','subnav5');this.blur();">场馆简介</span></a>
+        <a href="kxyj/index.htm"><span class="sp" id="tag6"
+                onmouseover="switchTag('tag6','subnav6');this.blur();">通知公告</span></a>
+        <a href="xksz/index.htm"><span class="sp" id="tag4"
+                onmouseover="switchTag('tag4','subnav4');this.blur();">个人中心</span></a>
+    </div>
+    <!--nav end-->
+
+
+    <div id="main">
+        <div id="mainbody" style="height: 550px;">
+            <div id="indexline" style="height: 550px;">
+                <table border="1">
+                    <caption>羽毛球场预约</caption>
+                    <thead>
+                        <tr>
+                            <th>时间段</th>
+                            <th colspan="2">剩余数量</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>10:00 - 11:00</td>
+                            <td>2</td>
+                            <td>点此预约</td>
+                        </tr>
+
+                        <tr>
+                            <td>11:00 - 12:00</td>
+                            <td>2</td>
+                            <td>点此预约</td>
+                        </tr>
+
+                        <tr>
+                            <td>14:00 - 15:00</td>
+                            <td>2</td>
+                            <td>点此预约</td>
+                        </tr>
+
+                        <tr>
+                            <td>15:00 - 16:00</td>
+                            <td>2</td>
+                            <td>点此预约</td>
+                        </tr>
+
+                        <tr>
+                            <td>16:00 - 17:00</td>
+                            <td>2</td>
+                            <td>点此预约</td>
+                        </tr>
+
+                        <tr>
+                            <td>17:00 - 18:00</td>
+                            <td>2</td>
+                            <td>点此预约</td>
+                        </tr>
+
+                        <tr>
+                            <td>18:00 - 19:00</td>
+                            <td>2</td>
+                            <td>点此预约</td>
+                        </tr>
+
+                        <tr>
+                            <td>19:00 - 20:00</td>
+                            <td>2</td>
+                            <td>点此预约</td>
+                        </tr>
+
+                        <tr>
+                            <td>21:00 - 22:00</td>
+                            <td>2</td>
+                            <td>点此预约</td>
+                        </tr>
+
+
+                    </tbody>
+
+                    <tfoot align="center">
+                        <tr>
+                            <th colspan="3">5.29日羽毛球场预约</th>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+            <!--mainbody end-->
+
+        </div>
+        <!--mainbody end-->
+
+
+    </div>
+    <!--main end-->
+
+    <div id="footer">
+        <!-- <div class="bottomlogo">
+            <img src="images/logo-bottom.jpg">
+        </div> -->
+        <div class="bottomcontact_cn">通讯地址: GZ市大山中学体育馆 邮编: 111111<br>
+            电话: 020-7777-7777</div>
+        <div class="bottomcontact_en">
+            Address: Big Mountain Middle School Gym, GZ市, 111111, P. R. China<br>
+            TEL: +86-20-84112828
+        </div>
+        <div class="clear"></div>
+        <div class="copyright">大山中学版权所有 COPYRIGHT@1573-2022 , BMSG - <a href="#">联系我们</a> - <a href="#">网站地图</a> - <a
+                href="#">粤ICP备12345678号</a></div>
+    </div>
+    <!--footer end-->
+
+</body>
+
+</html>

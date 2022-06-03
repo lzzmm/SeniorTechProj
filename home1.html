@@ -132,14 +132,16 @@
             <a href="home1.html">
                 <img src="images/header1.png" alt="体育场馆在线预约系统" border="0"></a>
         </div>
-        <form name="searchingForm" action="http://zhannei.baidu.com/cse/search" target="_blank">
+        <form name="login" action="login.html" target="_blank">
             <div id="searchbox">
-                <!-- <input name="q" type="text" id="search" value="中大搜索"> -->
                 <a>
                     <input type="button" id="loginbutton" name="sbtn" onclick="submit()">
                 </a>
             </div>
         </form>
+        <!-- <a href="login.html" target="_blank">
+            <button id="loginbutton">登录</button>
+        </a> -->
     </div>
     <!--header end-->
 
@@ -153,7 +155,7 @@
                 onmouseover="switchTag('tag4','subnav4');this.blur();">团体预订</span></a> -->
         <a href="introduction-center.html"><span class="sp" id="tag5"
                 onmouseover="switchTag('tag5','subnav5');this.blur();">场馆简介</span></a>
-        <a href="kxyj/index.htm"><span class="sp" id="tag6"
+        <a href="announcement.html"><span class="sp" id="tag6"
                 onmouseover="switchTag('tag6','subnav6');this.blur();">通知公告</span></a>
         <a href="profile.html"><span class="sp" id="tag4"
                 onmouseover="switchTag('tag4','subnav4');this.blur();">个人中心</span></a>
@@ -183,19 +185,38 @@
                         <div class="cols01">
                             <div class="channel_shadow">
                                 <div class="channel">
-                                    <h3><span class="newsmore"><a
-                                                href="http://news2.sysu.edu.cn">更多&gt;&gt;</a></span><span
-                                            id="sysunews01" class=""
-                                            onmouseover="switchNews('sysunews01','newslist01');this.blur();">通知公告</span>
-                                        <span id="sysunews02" class="newsdown"
-                                            onmouseover="switchNews('sysunews02','newslist02');this.blur();"
-                                            onclick="location.href='../en/news/index.htm';">NEWS &amp; EVENTS</span>
-                                    </h3>
+                                    <h3><span class="newsmore"><a href="announcement.html">更多&gt;&gt;</a></span>通知公告</h3>
                                     <div id="newslist01" class="">
-                                        <iframe id="ifzdxw"
-                                            src="http://news2.sysu.edu.cn/news01/mainsysunews.htm?new=60717"
-                                            frameborder="0" scrolling="no" height="252" width="356"
-                                            noresize="noresize"></iframe>
+                                        <ul id="xsyg01">
+                                            <li><span class="newstime">11-18</span><a
+                                                    href="announce1.html"
+                                                    target="_blank"
+                                                    title="羽毛球场">公告1</a>
+                                            </li>
+                                            <li><span class="newstime">11-17</span><a
+                                                    href="announce2.html"
+                                                    target="_blank"
+                                                    title="篮球场">公告2
+                                                </a></li>
+                                            <li><span class="newstime">11-17</span><a
+                                                    href="announce3.html"
+                                                    target="_blank" title="乒乓球场">公告3</a>
+                                            </li>
+                                            <li><span class="newstime">11-16</span><a
+                                                    href="announce4.html"
+                                                    target="_blank" title="游泳馆">公告4</a></li>
+                                            <li><span class="newstime">11-16</span><a
+                                                    href="announce5.html"
+                                                    target="_blank"
+                                                    title="足球场">公告5</a>
+                                            </li>
+                                            <li>
+                                                <span class="newstime">11-16</span><a
+                                                    href="announce6.html"
+                                                    target="_blank"
+                                                    title="网球场">公告6</a>
+                                            </li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
@@ -204,15 +225,7 @@
                         <div class="cols01">
                             <div class="channel_shadow">
                                 <div class="channel">
-                                    <h3>
-                                        <span class="newsmore"><a href="booking-center.html">更多&gt;&gt;</a></span>
-                                        <span id="sysunews03" class="newsdown"
-                                            onmouseover="switchMeiti('sysunews03','newslist03');this.blur();">预约入口</span>
-                                        <span id="sysunews04" class=""
-                                            onmouseover="switchMeiti('sysunews04','newslist04');this.blur();"
-                                            onclick="location.href='../en/announcements/index.htm';">BOOKING PROTAL
-                                        </span>
-                                    </h3>
+                                    <h3><span class="newsmore"><a href="booking-center.html">更多&gt;&gt;</a></span>预约入口</h3>
                                     <div id="newslist03" style="height: 252px">
                                         <ul id="xsyg01">
                                             <li><span class="newstime">11-18</span><a

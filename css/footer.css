@@ -26,13 +26,13 @@
         .copyright {
             padding: 10px;
             margin: 0px;
-            color: #99BCA8;
+            color: #FFFFFF;
             font-size: 12px;
             text-align: center;
             word-spacing: 3px;
         }
 
             .copyright a:active, .copyright a:link, .copyright a:visited {
-                color: #99BCA8;
+                color: #FFFFFF;
                 text-decoration: none;
             }

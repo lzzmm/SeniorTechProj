@@ -27,13 +27,14 @@
             padding: 0px;
             background: #FFFFFF;
             margin: 0px;
+            font-size: larger;
         }
 
         H3 {
             padding: 0px 0px 12px 5px;
             margin: 16px 15px 5px 15px;
-            color: #006600;
-            font-size: 14px;
+            color: #1a93de;
+            font-size: 18px;
             font-weight: bold;
             background: url(../images/line.gif) repeat-x bottom;
         }
@@ -75,16 +76,16 @@
         }
 
         .commontext {
-            font-size: 12px;
+            font-size: 18px;
             margin: 5px 15px;
-            padding: 5px 10px;
+            padding: 10px 20px 10px 20px;
             color: #999999;
             line-height: 20px;
             font-weight: normal;
         }
 
         .channel A:link, .channel A:visited, .channel A:active {
-            font-size: 12px;
+            font-size: 16px;
             font-weight: normal;
             text-decoration: none;
             color: #000000;

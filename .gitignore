@@ -1,6 +1,9 @@
 # Prerequisites
 *.d
 
+# Visual Studio
+*.vs*
+
 # Object files
 *.o
 *.ko

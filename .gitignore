@@ -5,7 +5,7 @@
 *.vs*
 
 # tomcat
-*INF/*
+
 
 # Object files
 *.o

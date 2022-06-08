@@ -7,11 +7,11 @@
         // TODO: try auto login 
     } else {
         // String sectionUserID = (String)session.getAttribute("userid");
-        response.sendRedirect("index.html");
+        response.sendRedirect("index.jsp");
     }
 
 	String msg ="";
-    String tableName = "testuser";
+    String tableName = "testuser"; // db table
 	String connectString = "jdbc:mysql://172.18.187.253:3306/boke19335016"
 					+ "?autoReconnect=true&useUnicode=true"
 					+ "&characterEncoding=UTF-8"; 
@@ -37,10 +37,10 @@
 		if (rs.next()) {
             rstable.append("<br><text> 登录成功！</text><br>");
             session.setAttribute("userid", id);
-            response.sendRedirect("index.html");
+            response.sendRedirect("index.jsp");
         } // if (rs.next())
         else {
-            rstable.append("<br><text> 学号：" + id + " 密码：" + pwd + "<br>学号或密码错误！</text><br>");
+            rstable.append("<br><text> 学号或密码错误！</text><br>");
         }
 		rs.close();
 		stmt.close();
@@ -53,7 +53,7 @@
         stmt.setString(1, id);
         ResultSet rs=stmt.executeQuery();
 		if (rs.next()) {
-            rstable.append("<br><text>id: " + rs.getString("id") + " pwd: " + rs.getString("pwd") + " 学号已存在！</text><br>");
+            rstable.append("<br><text>学号: " + rs.getString("id") + " 已存在！</text><br>");
         } // if (rs.next())
         else {
             PreparedStatement stmt2=con.prepareStatement("insert into " + tableName + " (id, pwd) values (?, ?)");

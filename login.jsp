@@ -9,28 +9,30 @@
 					+ "?autoReconnect=true&useUnicode=true"
 					+ "&characterEncoding=UTF-8"; 
 	String id = request.getParameter("id");
-    String pswd = request.getParameter("pswd");
+    String pwd = request.getParameter("pwd");
     StringBuilder rstable=new StringBuilder("");
 	try{
       if (request.getParameter("id") == null || request.getParameter("id").isEmpty()) {
         rstable.append("<br><text> 学号不可为空！</text><br>"); // TODO: judge and show in frontend 
       }
-      else if (request.getParameter("pswd") == null || request.getParameter("pswd").isEmpty()) {
+      else if (request.getParameter("pwd") == null || request.getParameter("pwd").isEmpty()) {
         rstable.append("<br><text> 密码不可为空！</text><br>");
       }
 	  else if(request.getParameter("login") != null) {
 		Class.forName("com.mysql.jdbc.Driver");
-		Connection con=DriverManager.getConnection(connectString, 
-						"user", "123");
-		Statement stmt=con.createStatement();
-        // TODO: using PreparedStatement 
-		ResultSet rs=stmt.executeQuery("select * from " + tableName + " where id = '" + id + "' and pswd = '" + pswd + "'");
+		Connection con = DriverManager.getConnection(connectString, "user", "123");
+		PreparedStatement stmt=con.prepareStatement("select * from " + tableName + " where id = ? and pwd = ?");
+        stmt.setString(1, id);
+        stmt.setString(2, pwd);
+        // using PreparedStatement 
+		//ResultSet rs=stmt.executeQuery("select * from " + tableName + " where id = '" + id + "' and pwd = '" + pwd + "'");
+        ResultSet rs=stmt.executeQuery();
 		if (rs.next()) {
-            rstable.append("<br><text>id: " + rs.getString("id") + " pswd: " + rs.getString("pswd") + " 登录成功！</text><br>");
+            rstable.append("<br><text>id: " + rs.getString("id") + " pwd: " + rs.getString("pwd") + " 登录成功！</text><br>");
             response.sendRedirect("index.html");
         } // if (rs.next())
         else {
-            rstable.append("<br><text>id: " + id + " pswd: " + pswd + " 学号或密码错误！</text><br>");
+            rstable.append("<br><text>id: " + id + " pwd: " + pwd + " 学号或密码错误！</text><br>");
         }
 		rs.close();
 		stmt.close();
@@ -38,13 +40,21 @@
 	  } // if(request.getParameter("login") != null)
       else if (request.getParameter("register") != null) { // TODO
         Class.forName("com.mysql.jdbc.Driver");
-		Connection con=DriverManager.getConnection(connectString, 
-						"user", "123");
-		Statement stmt=con.createStatement();
-		ResultSet rs=stmt.executeQuery("select * from " + tableName + " where id = '" + id + "'");
+		Connection con=DriverManager.getConnection(connectString, "user", "123");
+		PreparedStatement stmt=con.prepareStatement("select * from " + tableName + " where id = ?");
+        stmt.setString(1, id);
+        ResultSet rs=stmt.executeQuery();
 		if (rs.next()) {
-            rstable.append("<br><text>id: " + rs.getString("id") + " pswd: " + rs.getString("pswd") + " 学号已存在！</text><br>");
+            rstable.append("<br><text>id: " + rs.getString("id") + " pwd: " + rs.getString("pwd") + " 学号已存在！</text><br>");
         } // if (rs.next())
+        else {
+            PreparedStatement stmt2=con.prepareStatement("insert into " + tableName + " (id, pwd) values (?, ?)");
+            stmt2.setString(1, id);
+            stmt2.setString(2, pwd);
+            stmt2.executeUpdate();
+		    stmt2.close();
+            rstable.append("<br><text> 学号：" + id + " 注册成功！</text><br>");
+        } // else
 		rs.close();
 		stmt.close();
 		con.close();
@@ -232,30 +242,28 @@
             <div id="indexline" style="height: 400px; background-color: #FFFFFF;">
                 <fieldset id="filed" style="background-color: #03437b;">
                     <form action="login.jsp" method="post">
-                        <p><label for="title" style="color: #FFFFFF;">学号: </label>
-                            <input name="id" type="text" maxlength=60 placeholder="请输入学号" value="${param.id}">
+                        <p><label for="title" style="color: #FFFFFF; font-size: 24px;">学号: </label>
+                            <input name="id" type="text" maxlength=16 placeholder="请输入学号" value="${param.id}" style="font-size: 24px;">
                         </p>
                         <p>
                             &nbsp;
                         </p>
-                        <p><label for="keywords" style="color: #FFFFFF;">密码: </label>
-                            <input name="pswd" type="password" maxlength=60 placeholder="请输入密码" value="${param.pswd}">
+                        <p><label for="keywords" style="color: #FFFFFF; font-size: 24px;">密码: </label>
+                            <input name="pwd" type="password" maxlength=32 placeholder="请输入密码" value="${param.pwd}" style="font-size: 24px;">
                         </p>
                         <p>
                             &nbsp;
                         </p>
-                        <p><label for="keywords" style="color: #FFFFFF;">登录: </label>
-                            <input name="login" type="submit" value="登录">
+                        <p>
+                            <button name="login" type="submit" value="登录" style="float: left;width: 240px;height: 36px;margin-left: 60px;font-size: 22px;">登录</button>
+                            <button name="register" type="submit" value="注册" style="float: right;width: 240px;height: 36px;margin-right: 30px;font-size: 22px;">注册</button>
                         </p>
                         <p>
                             &nbsp;
                         </p>
-                        <p><label for="keywords" style="color: #FFFFFF;">注册: </label>
-                            <input name="register" type="submit" value="注册">
-                        </p>
-                        <div>
-                            <%=rstable%><br><br>
-                            <%=msg%>
+                        <div style="margin-top: 30px; font-size: 22px; color: #FFFFFF">
+                            <%=rstable%><br>
+                            <%=msg%><br>
                         </div>
                         <!-- <input name="exit" type="submit" value="退出"> &nbsp;&nbsp; -->
                         <!-- <button name="clear" type="reset" disabled>复位</button> </p> -->

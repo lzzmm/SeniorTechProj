@@ -2,7 +2,14 @@
          contentType="text/html; charset=utf-8"
 %><%
 	request.setCharacterEncoding("utf-8");
-    // TODO: section and cookie
+    // TODO: session and cookie
+    if(session.getAttribute("userid") == null) {
+        // TODO: try auto login 
+    } else {
+        // String sectionUserID = (String)session.getAttribute("userid");
+        response.sendRedirect("index.html");
+    }
+
 	String msg ="";
     String tableName = "testuser";
 	String connectString = "jdbc:mysql://172.18.187.253:3306/boke19335016"
@@ -28,11 +35,12 @@
 		//ResultSet rs=stmt.executeQuery("select * from " + tableName + " where id = '" + id + "' and pwd = '" + pwd + "'");
         ResultSet rs=stmt.executeQuery();
 		if (rs.next()) {
-            rstable.append("<br><text>id: " + rs.getString("id") + " pwd: " + rs.getString("pwd") + " 登录成功！</text><br>");
+            rstable.append("<br><text> 登录成功！</text><br>");
+            session.setAttribute("userid", id);
             response.sendRedirect("index.html");
         } // if (rs.next())
         else {
-            rstable.append("<br><text>id: " + id + " pwd: " + pwd + " 学号或密码错误！</text><br>");
+            rstable.append("<br><text> 学号：" + id + " 密码：" + pwd + "<br>学号或密码错误！</text><br>");
         }
 		rs.close();
 		stmt.close();
@@ -258,6 +266,7 @@
                             <button name="login" type="submit" value="登录" style="float: left;width: 240px;height: 36px;margin-left: 60px;font-size: 22px;">登录</button>
                             <button name="register" type="submit" value="注册" style="float: right;width: 240px;height: 36px;margin-right: 30px;font-size: 22px;">注册</button>
                         </p>
+                        <!-- TODO: use cookie to enable auto login -->
                         <p>
                             &nbsp;
                         </p>

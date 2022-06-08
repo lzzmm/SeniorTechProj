@@ -4,6 +4,9 @@
 # Visual Studio
 *.vs*
 
+# tomcat
+*INF/*
+
 # Object files
 *.o
 *.ko

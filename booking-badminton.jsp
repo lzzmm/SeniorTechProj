@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" 
+<%@ page language="java" import="java.util.*,java.sql.*" 
          contentType="text/html; charset=utf-8"%>
 <%request.setCharacterEncoding("utf-8");%>
 
@@ -7,68 +7,79 @@
     String year = "";
     String month  = "";
     String day = "";
+    int showTable = 1;
 
-    String connectString = "jdbc:mysql://172.18.187.253:3306/boke19335016"
-    + "?autoReconnect=true&useUnicode=true"
-    + "&characterEncoding=UTF-8"; 
+	String connectString = "jdbc:mysql://172.18.187.253:3306/boke19335016"
+					+ "?autoReconnect=true&useUnicode=true"
+					+ "&characterEncoding=UTF-8"; 
 
     StringBuilder table=new StringBuilder("");
-
 		
 	if(request.getParameter("query") != null){
 
         year = request.getParameter("year");
-        if (year == null) {
-            year="";
-        } 
         month = request.getParameter("month");
-        if (month == null) {
-            month="";
-        }
         day = request.getParameter("day");
-        if (day == null) {
-            day="";
+
+        if(day.equals("31")){
+            if(month.equals("04")||month.equals("06")||month.equals("09")||month.equals("11")){
+                msg="无效日期";
+                showTable=0;
+            }
+        }
+        if(month.equals("02")){
+            if(day.equals("29")||day.equals("30")||day.equals("31")){
+                msg="无效日期";
+                showTable=0;
+            }
         }
 
+        if(showTable==1){
+
 	try{
-		//Class.forName("com.mysql.jdbc.Driver");
-		//Connection con=DriverManager.getConnection(connectString, 
-        //                "user", "123");
-		//Statement stmt=con.createStatement();
+
+        String s="select count(*) from booking where time = ? and type = 'badminton' and year = '" 
+            + year +"' and month ='" + month +"' and day = '" + day + "'";
+            
+		Class.forName("com.mysql.jdbc.Driver");
+		Connection con = DriverManager.getConnection(connectString, "user", "123");
+        PreparedStatement stmt=con.prepareStatement(s);
 
         table.append("<table border= '1'><caption>羽毛球场预约 &nbsp;"+year+"年"+month+"月"+day+"日</caption>");
         table.append("<tr><th>时间段</th><th>剩余数量</th><th>操作</th></tr>");
-        table.append("<tr><td>10:00 - 11:00</td>");
 
-		String s="select 10 - count(*) from booking where time = '10001100' and type = 'badminton' and year = '" 
-            + year +"' and month ='" + month +"' and day = '" + day + "'";
-
-		//ResultSet rs=stmt.executeQuery(s);
-
-		//if(rs.next()) {
-            //String nums =  rs.getString("count(*)");
-            String nums ="0";
-			table.append("<td>" + nums + "</td>");
+        String[] timearray ={"10001100", "11001200", "14001500", "15001600", "16001700", "17001800", "18001900", "19002000", "20002100"};
+        String[] timearray2 ={"10:00 - 11:00", "11:00 - 12:00", "14:00 - 15:00", "15:00 - 16:00", "16:00 - 17:00", "17:00 - 18:00", "18:00 - 19:00", "19:00 - 20:00", "20:00 - 21:00"};
+        
+        for(int i=0;i<9;i++){
+        table.append("<tr><td>"+timearray2[i]+"</td>");
+        stmt.setString(1, timearray[i]);
+        ResultSet rs=stmt.executeQuery();
+		if(rs.next()) {
+            String nums =  rs.getString("count(*)");
             int numi = Integer.valueOf(nums).intValue();
+            numi= 10 - numi;
+            nums = String.valueOf(numi);
+            table.append("<td>" + nums + "</td>");
             if(numi>0){
-                String url = "booking.jsp?type=badminton&time=10001100&year="+year+"&month="+month+"&day="+day;
+                String url = "booking.jsp?type=badminton&time="+timearray[i]+"&year="+year+"&month="+month+"&day="+day;
                 table.append("<td><a href='" + url + "'>点击预约</a> </td></tr>");
             }
             else{
                 table.append("<td id ='full'> 位置已满 </td></tr>");
             }
+		} 
+        rs.close();           
+        }    
 
-
-		//}
 	    table.append("</table>");
-
-	    //rs.close();
-	    //stmt.close();
-	    //con.close();
+	    stmt.close();
+	    con.close();
 	}
 	catch (Exception e){
 	    msg = e.getMessage();
 	}
+    }
     }
     else{
         msg="请输入预约日期";
@@ -101,14 +112,16 @@
 
         td,
         th {
-            height: 40px;
+            height: 35px;
             width: 240px;
+            font-size: 15px;
             text-align: center
         }
 
         caption {
-            font-size: 20px;
+            font-size: 25px;
             font-weight: bold;
+            margin: 0 0 10px 0;
         }
 
         p {
@@ -189,13 +202,17 @@
             height: 105px;
         }
 
-        #indexline{
-            margin:auto;
-            color: #FFF;
-        }
-        
+
         #full{
             color: gray;
+        }
+
+        #inputbox,
+        #messagebox{
+            margin: 10px 0 0 0;
+            text-align: center;
+            color: #FFF;
+            font-size: 15px;
         }
 
         /* frame end */
@@ -233,37 +250,37 @@
     <div id="main">
         <div id="mainbody" style="height: 550px;">
             <div id="indexline" style="height: 550px; ">
-                <form action="booking-badminton.jsp" method="post" name="f">
+                <form action="booking-badminton.jsp" method="post" name="f" id="inputbox">
                     <label> &nbsp; 预约日期: &nbsp; </label>
                     <select name="year">
                         <option value="2022"  <%=month.equals("2022")?"selected":""%>>2022</option>
                      </select>
                      年 &nbsp;
                      <select name="month">
-                        <option value="1" <%=month.equals("1")?"selected":""%>>1</option>
-                        <option value="2" <%=month.equals("2")?"selected":""%>>2</option>
-                        <option value="3" <%=month.equals("3")?"selected":""%>>3</option>
-                        <option value="4" <%=month.equals("4")?"selected":""%>>4</option>
-                        <option value="5" <%=month.equals("5")?"selected":""%>>5</option>
-                        <option value="6" <%=month.equals("6")?"selected":""%>>6</option>
-                        <option value="7" <%=month.equals("7")?"selected":""%>>7</option>
-                        <option value="8" <%=month.equals("8")?"selected":""%>>8</option>
-                        <option value="9" <%=month.equals("9")?"selected":""%>>9</option>
+                        <option value="01" <%=month.equals("01")?"selected":""%>>1</option>
+                        <option value="02" <%=month.equals("02")?"selected":""%>>2</option>
+                        <option value="03" <%=month.equals("03")?"selected":""%>>3</option>
+                        <option value="04" <%=month.equals("04")?"selected":""%>>4</option>
+                        <option value="05" <%=month.equals("05")?"selected":""%>>5</option>
+                        <option value="06" <%=month.equals("06")?"selected":""%>>6</option>
+                        <option value="07" <%=month.equals("07")?"selected":""%>>7</option>
+                        <option value="08" <%=month.equals("08")?"selected":""%>>8</option>
+                        <option value="09" <%=month.equals("09")?"selected":""%>>9</option>
                         <option value="10" <%=month.equals("10")?"selected":""%>>10</option>
                         <option value="11" <%=month.equals("11")?"selected":""%>>11</option>
                         <option value="12" <%=month.equals("12")?"selected":""%>>12</option>
                      </select>
                      月 &nbsp;
                      <select name="day">
-                        <option value="1" <%=day.equals("1")?"selected":""%>>1</option>
-                        <option value="2" <%=day.equals("2")?"selected":""%>>2</option>
-                        <option value="3" <%=day.equals("3")?"selected":""%>>3</option>
-                        <option value="4" <%=day.equals("4")?"selected":""%>>4</option>
-                        <option value="5" <%=day.equals("5")?"selected":""%>>5</option>
-                        <option value="6" <%=day.equals("6")?"selected":""%>>6</option>
-                        <option value="7" <%=day.equals("7")?"selected":""%>>7</option>
-                        <option value="8" <%=day.equals("8")?"selected":""%>>8</option>
-                        <option value="9" <%=day.equals("9")?"selected":""%>>9</option>
+                        <option value="01" <%=day.equals("01")?"selected":""%>>1</option>
+                        <option value="02" <%=day.equals("02")?"selected":""%>>2</option>
+                        <option value="03" <%=day.equals("03")?"selected":""%>>3</option>
+                        <option value="04" <%=day.equals("04")?"selected":""%>>4</option>
+                        <option value="05" <%=day.equals("05")?"selected":""%>>5</option>
+                        <option value="06" <%=day.equals("06")?"selected":""%>>6</option>
+                        <option value="07" <%=day.equals("07")?"selected":""%>>7</option>
+                        <option value="08" <%=day.equals("08")?"selected":""%>>8</option>
+                        <option value="09" <%=day.equals("09")?"selected":""%>>9</option>
                         <option value="10" <%=day.equals("10")?"selected":""%>>10</option>
                         <option value="11" <%=day.equals("11")?"selected":""%>>11</option>
                         <option value="12" <%=day.equals("12")?"selected":""%>>12</option>
@@ -279,18 +296,19 @@
                         <option value="22" <%=day.equals("22")?"selected":""%>>22</option>
                         <option value="23" <%=day.equals("23")?"selected":""%>>23</option>
                         <option value="24" <%=day.equals("24")?"selected":""%>>24</option>
-                        <option value="18" <%=day.equals("25")?"selected":""%>>25</option>
-                        <option value="19" <%=day.equals("26")?"selected":""%>>26</option>
-                        <option value="20" <%=day.equals("27")?"selected":""%>>27</option>
-                        <option value="21" <%=day.equals("28")?"selected":""%>>28</option>
-                        <option value="22" <%=day.equals("29")?"selected":""%>>29</option>
-                        <option value="23" <%=day.equals("30")?"selected":""%>>30</option>
-                        <option value="24" <%=day.equals("31")?"selected":""%>>31</option>
+                        <option value="25" <%=day.equals("25")?"selected":""%>>25</option>
+                        <option value="26" <%=day.equals("26")?"selected":""%>>26</option>
+                        <option value="27" <%=day.equals("27")?"selected":""%>>27</option>
+                        <option value="28" <%=day.equals("28")?"selected":""%>>28</option>
+                        <option value="29" <%=day.equals("29")?"selected":""%>>29</option>
+                        <option value="30" <%=day.equals("30")?"selected":""%>>30</option>
+                        <option value="31" <%=day.equals("31")?"selected":""%>>31</option>
                      </select>
                      日 &nbsp;
                      <input name="query" type="submit" value="查询">
                 </form> 
-                <%=msg%>
+                <br>
+                <p id="messagebox"> <%=msg%> </p>
                 <%=table%>
 
             </div>

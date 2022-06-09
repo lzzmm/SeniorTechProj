@@ -107,7 +107,7 @@
 <body>
     <div id="header">
         <div id="version">
-            <a href="index.html">
+            <a href="index.jsp">
                 <img src="images/header1.png" alt="体育场馆在线预约系统" border="0">
             </a>
         </div>
@@ -125,7 +125,7 @@
         </a> -->
         <% } else { %>
         <div id="searchbox" style = "width: 200px; font-size: 18px; color: #FFFFFF;">
-        欢迎您, <text style = "font-size: 20px;"><%=session.getAttribute("userid")%></text> &nbsp;
+        欢迎您, <text style = "font-size: 20px;"><%=session.getAttribute("username")%></text> &nbsp;
         <form action="index.jsp" method="post" style = "float: right">
             <button name="logout" type="submit" id="logout">注销</button>
         </form>
@@ -139,7 +139,7 @@
 
     <div id="nav">
         <!-- <a href="index.htm"><span class="home">&nbsp;</span></a> -->
-        <a href="index.html">
+        <a href="index.jsp">
             <span class="sp" id="tag2"
                   onmouseover="switchTag('tag2','subnav2');this.blur();">首页</span>
         </a> |
@@ -155,7 +155,7 @@
             <span class="sp" id="tag6"
                   onmouseover="switchTag('tag6','subnav6');this.blur();">通知公告</span>
         </a> |
-        <a href="profile.html">
+        <a href="profile.jsp">
             <span class="sp" id="tag4"
                   onmouseover="switchTag('tag4','subnav4');this.blur();">个人中心</span>
         </a>

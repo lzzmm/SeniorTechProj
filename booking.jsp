@@ -10,7 +10,8 @@
     String day = "";
     String type = "";
     String time = "";
-    String s_id = "123";
+    String s_id = "";
+    int isbook=1;
 
     String connectString = "jdbc:mysql://172.18.187.253:3306/boke19335016"
     + "?autoReconnect=true&useUnicode=true"
@@ -28,8 +29,8 @@
     type = request.getParameter("type");
 
     // TODO
-    //s_id = session.getAttribute("userid");
-
+    s_id = (String) session.getAttribute("userid");
+    
     if (year == null || month == null || day == null || time == null || type == null){
         msg="内部错误";
     }
@@ -55,26 +56,38 @@
             String nums =  rs.getString("count(*)");
             int numi = Integer.valueOf(nums).intValue();
             numi = 10-numi;
-            if(numi>0){
-                s = "insert into booking(type, time, year, month, day, s_id) values('" + type + "', '" 
-                    + time + "', '" + year + "', '" + month + "', '" + day + "', '" + s_id + "')";
+            if(numi<=0){
+                msg="预约失败，该时段场馆位置已满";
+                isbook=0;
+            }
+        }
 
-                int rs2=stmt.executeUpdate(s);
-                if(rs2>0){
+        s += " and s_id='" + s_id +"'";
+        rs=stmt.executeQuery(s);
+        if(rs.next()) {
+            String nums1 =  rs.getString("count(*)");
+            int numi1 = Integer.valueOf(nums1).intValue();
+            if(numi1>0){
+                msg="请勿重复预约";
+                isbook=0;
+            }
+        }
+
+        if(isbook==1){
+            s = "insert into booking(type, time, year, month, day, s_id) values('" + type + "', '" 
+                + time + "', '" + year + "', '" + month + "', '" + day + "', '" + s_id + "')";
+            int rs2=stmt.executeUpdate(s);
+            if(rs2>0){
                 msg = "预约成功!";
-                }
-                else{
-                    msg="数据库错误";
-                }
             }
             else{
-                msg="预约失败，该时段场馆位置已满";
+                msg="数据库错误";
             }
-
+        }
+        
         rs.close();
 	    stmt.close();
 	    con.close();
-	    }
     }
 	catch (Exception e){
 	    msg = e.getMessage();
@@ -123,8 +136,6 @@
             margin: 0px;
             padding: 0px;
         }
-
-
 
         /* frame */
         #header {

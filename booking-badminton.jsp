@@ -8,6 +8,7 @@
     String month  = "";
     String day = "";
     int showTable = 1;
+    int max=8;
 
 	String connectString = "jdbc:mysql://172.18.187.253:3306/boke19335016"
 					+ "?autoReconnect=true&useUnicode=true"
@@ -57,17 +58,16 @@
         table.append("<table border= '1'>");
         table.append("<tr><th>时间段</th><th>剩余数量</th><th>操作</th></tr>");
 
-        String[] timearray ={"10001100", "11001200", "14001500", "15001600", "16001700", "17001800", "18001900", "19002000", "20002100"};
-        String[] timearray2 ={"10:00 - 11:00", "11:00 - 12:00", "14:00 - 15:00", "15:00 - 16:00", "16:00 - 17:00", "17:00 - 18:00", "18:00 - 19:00", "19:00 - 20:00", "20:00 - 21:00"};
+        String[] timearray ={"10:00 - 11:00", "11:00 - 12:00", "14:00 - 15:00", "15:00 - 16:00", "16:00 - 17:00", "17:00 - 18:00", "18:00 - 19:00", "19:00 - 20:00", "20:00 - 21:00"};
         
         for(int i=0;i<9;i++){
-        table.append("<tr><td>"+timearray2[i]+"</td>");
+        table.append("<tr><td>"+timearray[i]+"</td>");
         stmt.setString(1, timearray[i]);
         ResultSet rs=stmt.executeQuery();
 		if(rs.next()) {
             String nums =  rs.getString("count(*)");
             int numi = Integer.valueOf(nums).intValue();
-            numi= 10 - numi;
+            numi= max - numi;
             nums = String.valueOf(numi);
             table.append("<td>" + nums + "</td>");
             if(numi>0){

@@ -178,7 +178,7 @@
         <!-- <a href="index.htm"><span class="home">&nbsp;</span></a> -->
         <a href="index.jsp"><span class="sp" id="tag2"
                 onmouseover="switchTag('tag2','subnav2');this.blur();">首页</span></a> |
-        <a href="booking-center.html"><span class="sp" id="tag3"
+        <a href="booking-center.jsp"><span class="sp" id="tag3"
                 onmouseover="switchTag('tag3','subnav3');this.blur();">预订中心</span></a> |
         <a href="introduction-center.html"><span class="sp" id="tag5"
                 onmouseover="switchTag('tag5','subnav5');this.blur();">场馆简介</span></a> |

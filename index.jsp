@@ -241,7 +241,7 @@
                                     <div id="newslist03">
                                         <ul id="xsyg01">
                                             <li>
-                                                <a href="booking-badminton.html" target="_blank" title="羽毛球场">羽毛球场</a>
+                                                <a href="booking-badminton.jsp" target="_blank" title="羽毛球场">羽毛球场</a>
                                             </li>
                                             <li>
                                                 <a href="booking-basketball.html" target="_blank" title="篮球场">

@@ -11,7 +11,7 @@
     }
 
 	String msg ="";
-    String tableName = "testuser"; // db table
+    String tableName = "student"; // db table
 	String connectString = "jdbc:mysql://172.18.187.253:3306/boke19335016"
 					+ "?autoReconnect=true&useUnicode=true"
 					+ "&characterEncoding=UTF-8"; 
@@ -28,7 +28,7 @@
 	  else if(request.getParameter("login") != null) {
 		Class.forName("com.mysql.jdbc.Driver");
 		Connection con = DriverManager.getConnection(connectString, "user", "123");
-		PreparedStatement stmt=con.prepareStatement("select * from " + tableName + " where id = ? and pwd = ?");
+		PreparedStatement stmt=con.prepareStatement("select * from " + tableName + " where s_id = ? and password = ?");
         stmt.setString(1, id);
         stmt.setString(2, pwd);
         // using PreparedStatement 
@@ -49,19 +49,22 @@
       else if (request.getParameter("register") != null) { // TODO
         Class.forName("com.mysql.jdbc.Driver");
 		Connection con=DriverManager.getConnection(connectString, "user", "123");
-		PreparedStatement stmt=con.prepareStatement("select * from " + tableName + " where id = ?");
+		PreparedStatement stmt=con.prepareStatement("select * from " + tableName + " where s_id = ?");
         stmt.setString(1, id);
         ResultSet rs=stmt.executeQuery();
 		if (rs.next()) {
-            rstable.append("<br><text>学号: " + rs.getString("id") + " 已存在！</text><br>");
+            rstable.append("<br><text>学号: " + rs.getString("s_id") + " 已存在！请登录！ </text><br>");
         } // if (rs.next())
         else {
-            PreparedStatement stmt2=con.prepareStatement("insert into " + tableName + " (id, pwd) values (?, ?)");
+            PreparedStatement stmt2=con.prepareStatement("insert into " + tableName + " (s_id, password) values (?, ?)");
             stmt2.setString(1, id);
             stmt2.setString(2, pwd);
             stmt2.executeUpdate();
 		    stmt2.close();
             rstable.append("<br><text> 学号：" + id + " 注册成功！</text><br>");
+            rstable.append("<br><text> 登录成功！</text><br>");
+            session.setAttribute("userid", id);
+            response.sendRedirect("index.jsp");
         } // else
 		rs.close();
 		stmt.close();

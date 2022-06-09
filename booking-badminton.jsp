@@ -1,9 +1,8 @@
-<%@ page language="java" import="java.util.*,java.sql.*" 
+<%@ page language="java" import="java.util.*,java.sql.*,java.util.Date,java.text.SimpleDateFormat" 
          contentType="text/html; charset=utf-8"%>
 <%request.setCharacterEncoding("utf-8");%>
 
 <%
-    String title = "羽毛球场预约";
 	String msg = "";
     String year = "";
     String month  = "";
@@ -35,9 +34,18 @@
             }
         }
 
+        String date1 = year + month + day;
+        java.text.SimpleDateFormat formatter = new SimpleDateFormat( "yyyyMMdd ");
+        String today = formatter.format(new Date());
+
+        if(date1.compareTo(today) <= 0) {
+            msg="请选择未来的日期";
+            showTable=0;
+        }
+
         if(showTable==1){
 
-	try{
+	    try{
 
         String s="select count(*) from booking where time = ? and type = 'badminton' and year = '" 
             + year +"' and month ='" + month +"' and day = '" + day + "'";
@@ -258,7 +266,7 @@
     <div id="main">
         <div id="mainbody" style="height: 550px;">
             <div id="indexline" style="height: 550px; ">
-                <p id="secondheader"><%=title%></p>
+                <h2 id="secondheader">羽 毛 球 场 预 约</h2>
                 <form action="booking-badminton.jsp" method="post" name="f" id="inputbox">
                     <label> &nbsp; 预约日期: &nbsp; </label>
                     <select name="year">
@@ -316,7 +324,7 @@
                      日 &nbsp;
                      <input name="query" type="submit" value="查询">
                 </form> 
-                <p id="messagebox"> <%=msg%> </p>
+                <p id="messagebox"> <%=msg%> </p><br>
                 <%=table%>
 
             </div>

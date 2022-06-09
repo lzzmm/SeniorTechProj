@@ -1,90 +1,26 @@
 ﻿<%@ page language="java" import="java.util.*,java.sql.*" 
          contentType="text/html; charset=utf-8"
-%><%
-	request.setCharacterEncoding("utf-8");
-    String msg  = "";
-    String id   = (String)session.getAttribute("userid");
-    String name = (String)session.getAttribute("username");
-    StringBuilder table=new StringBuilder("");
-    if(id == null || id.isEmpty()) {
-        // TODO: try auto login include file = "autologin.jsp"
-        response.sendRedirect("login.jsp");
-    } else {
-	    String connectString = "jdbc:mysql://172.18.187.253:3306/boke19335016"
-					    + "?autoReconnect=true&useUnicode=true"
-					    + "&characterEncoding=UTF-8"; 
-        try{
-		    Class.forName("com.mysql.jdbc.Driver");
-		    Connection con = DriverManager.getConnection(connectString, "user", "123");
-		    PreparedStatement stmt=con.prepareStatement("select * from booking where s_id = ?");
-            stmt.setString(1, id);
-            ResultSet rs=stmt.executeQuery();
-            //table.append("<table>");
-		    table.append("<tr><th>预定编号</th><th>场馆类型</th><th>预约日期</th><th>预约时间段</th></tr>");
-            String startTime = "";
-            String endTime = "";
-		    while (rs.next()) {
-                table.append("<tr colspan=\"2\">");
-		        table.append("<td>" + rs.getString("b_id") + "</td>");
-		        table.append("<td>" + rs.getString("type") + "</td>");
-		        table.append("<td>" + rs.getString("year") + "年" + rs.getString("month") + "月" + rs.getString("day") + "日" + "</td>");
-                table.append("<td>" + rs.getString("time") + "</td>");
-		        table.append("</tr>");    
-            } // while (rs.next())
-            //table.append("</table>");
-		    rs.close();
-		    stmt.close();
-		    con.close();
-	    }
-        catch (Exception e){
-	        msg = e.getMessage();
-	    }
-    }
 %><!DOCTYPE HTML>
 <meta charset="UTF-8">
 <html>
 
 <head>
-    <title>个人中心</title>
+    <title>预订中心</title>
     <script src="js/menu.js"></script>
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/nav.css">
     <link rel="stylesheet" href="css/subnav.css">
     <link rel="stylesheet" href="css/indexline.css">
     <link rel="stylesheet" href="css/colsleft.css">
-    <!-- <link rel="stylesheet" href="css/cols02.css"> -->
     <link rel="stylesheet" href="css/quicklinks.css">
     <link rel="stylesheet" href="css/sublinks.css">
     <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="css/body.css">
     <style>
-        table {
-            /* border-collapse: collapse */
-            border-color: #FFFFFF;
-            color: #FFF;
-            margin: 0 auto;
-        }
-
-        td,
-        th {
-            height: 40px;
-            width: 240px;
-            text-align: center
-        }
-
-        caption {
-            font-size: 20px;
-            font-weight: bold;
-        }
-
-
-
         p {
             margin: 0px;
             padding: 0px;
         }
-
-
 
         /* frame */
         #header {
@@ -95,8 +31,6 @@
             position: relative;
             padding: 0px;
         }
-
-
 
         #subnav {
             width: 998px;
@@ -115,8 +49,6 @@
             overflow: hidden;
             padding: 0px 0px 5px 0px;
         }
-
-
 
         #quicklinks {
             width: 998px;
@@ -158,19 +90,29 @@
             height: 105px;
         }
 
+        #field {
+            width: 200px;
+            height: 150px;
+            text-align: center;
+        }
+
+        #field_table {
+            width: 250px;
+        }
+
         /* frame end */
     </style>
 </head>
 
-<body link="#FFFFFF" alink="FFFFFF" vlink="FFFFFF">
+<body>
     <div id="header">
-        <!-- <div id="logo">
-            <img src="images/logo.jpg" alt="中山大学">
-        </div> -->
+
         <div id="version">
             <a href="index.jsp">
-                <img src="images/header1.png" alt="体育场馆在线预约系统" border="0"></a>
+                <img src="images/header1.png" alt="体育场馆在线预约系统" border="0">
+            </a>
         </div>
+        <%@ include file="./autologin.jsp" %>
     </div>
     <!--header end-->
 
@@ -190,32 +132,75 @@
     <!--nav end-->
 
 
+
     <div id="main">
-        <div id="mainbody" style="height: 400px;">
-            <div id="indexline" style="height: 400px;">
-                
-                <table border="1">
-                    <caption>个人中心</caption>
-                    <thead>
-                        <tr>
-                            <th>姓名：</th>
-                            <th><%=name%></th>
-                        </tr>
-                        <tr>
-                            <th>学号：</th>
-                            <th><%=id%></th>
-                        </tr>
-                        <tr>
-                            <th colspan="2">订单记录</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <%=table%>
-                    </tbody>
-                </table>
-                
-            </div>
-            <!--mainbody end-->
+        <div id="mainbody">
+            <p>
+                &nbsp;&nbsp;
+            </p>
+            <table style="margin: auto;">
+
+                <tr>
+
+                    <td id="field_table">
+                        <a href="booking-badminton.jsp">
+                            <img src="images/small-badminton.webp" id="field">
+                            <p id="field">
+                                羽毛球场
+                            </p>
+                        </a>
+                    </td>
+
+                    <td id="field_table">
+                        <a href="booking-basketball.html">
+                            <img src="images/small-basketball.jpg" id="field">
+                            <p id="field">
+                                篮球场
+                            </p>
+                        </a>
+                    </td>
+
+                    <td id="field_table">
+                        <a href="booking-tennis.html">
+                            <img src="images/small-tennis.webp" id="field">
+                            <p id="field">
+                                网球场
+                            </p>
+                        </a>
+                    </td>
+                </tr>
+
+                <tr></tr>
+                <td id="field_table">
+                    <a href="booking-table-tennis.html">
+                        <img src="images/small-table-tennis.webp" id="field">
+                        <p id="field">
+                            乒乓球场
+                        </p>
+                    </a>
+                </td>
+
+                <td id="field_table">
+                    <a href="booking-swimming.html">
+                        <img src="images/small-swimming-pool.webp" id="field">
+                        <p id="field">
+                            游泳馆
+                        </p>
+                    </a>
+                </td>
+
+                <td id="field_table">
+                    <a href="booking-football.html">
+                        <img src="images/small-football.webp" id="field">
+                        <p id="field">
+                            足球场
+                        </p>
+                    </a>
+                </td>
+                </tr>
+
+
+            </table>
 
         </div>
         <!--mainbody end-->
@@ -225,9 +210,6 @@
     <!--main end-->
 
     <div id="footer">
-        <!-- <div class="bottomlogo">
-            <img src="images/logo-bottom.jpg">
-        </div> -->
         <div class="bottomcontact_cn">通讯地址: GZ市大山中学体育馆 邮编: 111111<br>
             电话: 020-7777-7777</div>
         <div class="bottomcontact_en">

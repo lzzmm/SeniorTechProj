@@ -11,12 +11,13 @@
             if(request.getParameter("logout") != null) {
                 session.setAttribute("userid", null);
                 session.removeAttribute("userid");
+                session.setAttribute("username", null);
+                session.removeAttribute("username");
                 response.sendRedirect("index.jsp");
             }
         } catch (Exception e){
 	      msg = e.getMessage();
 	    }
-
     }
 
 %><!DOCTYPE HTML>
@@ -143,7 +144,7 @@
             <span class="sp" id="tag2"
                   onmouseover="switchTag('tag2','subnav2');this.blur();">首页</span>
         </a> |
-        <a href="booking-center.html">
+        <a href="booking-center.jsp">
             <span class="sp" id="tag3"
                   onmouseover="switchTag('tag3','subnav3');this.blur();">预订中心</span>
         </a> |
@@ -236,7 +237,7 @@
                             <div class="channel_shadow">
                                 <div class="channel">
                                     <h3>
-                                        <span class="newsmore"><a href="booking-center.html">更多&gt;&gt;</a></span>预约入口
+                                        <span class="newsmore"><a href="booking-center.jsp">更多&gt;&gt;</a></span>预约入口
                                     </h3>
                                     <div id="newslist03">
                                         <ul id="xsyg01">

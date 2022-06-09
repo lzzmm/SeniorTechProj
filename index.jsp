@@ -152,7 +152,7 @@
             <span class="sp" id="tag5"
                   onmouseover="switchTag('tag5','subnav5');this.blur();">场馆简介</span>
         </a> |
-        <a href="announcement.html">
+        <a href="announcement.jsp">
             <span class="sp" id="tag6"
                   onmouseover="switchTag('tag6','subnav6');this.blur();">通知公告</span>
         </a> |
@@ -187,7 +187,7 @@
                             <div class="channel_shadow">
                                 <div class="channel">
                                     <h3>
-                                        <span class="newsmore"><a href="announcement.html">更多&gt;&gt;</a></span>通知公告
+                                        <span class="newsmore"><a href="announcement.jsp">更多&gt;&gt;</a></span>通知公告
                                     </h3>
                                     <div id="newslist01" class="">
                                         <ul id="xsyg01">

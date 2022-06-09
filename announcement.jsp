@@ -1,84 +1,22 @@
 ﻿<%@ page language="java" import="java.util.*,java.sql.*" 
          contentType="text/html; charset=utf-8"
-%><%
-	request.setCharacterEncoding("utf-8");
-    String msg  = "";
-    String id   = (String)session.getAttribute("userid");
-    String name = (String)session.getAttribute("username");
-    StringBuilder table=new StringBuilder("");
-    if(id == null || id.isEmpty()) {
-        // TODO: try auto login include file = "autologin.jsp"
-        response.sendRedirect("login.jsp");
-    } else {
-	    String connectString = "jdbc:mysql://172.18.187.253:3306/boke19335016"
-					    + "?autoReconnect=true&useUnicode=true"
-					    + "&characterEncoding=UTF-8"; 
-        try{
-		    Class.forName("com.mysql.jdbc.Driver");
-		    Connection con = DriverManager.getConnection(connectString, "user", "123");
-		    PreparedStatement stmt=con.prepareStatement("select * from booking where s_id = ?");
-            stmt.setString(1, id);
-            ResultSet rs=stmt.executeQuery();
-            //table.append("<table>");
-		    table.append("<tr><th>预定编号</th><th>场馆类型</th><th>预约日期</th><th>预约时间段</th></tr>");
-            String startTime = "";
-            String endTime = "";
-		    while (rs.next()) {
-                table.append("<tr colspan=\"2\">");
-		        table.append("<td>" + rs.getString("b_id") + "</td>");
-		        table.append("<td>" + rs.getString("type") + "</td>");
-		        table.append("<td>" + rs.getString("year") + "年" + rs.getString("month") + "月" + rs.getString("day") + "日" + "</td>");
-                table.append("<td>" + rs.getString("time") + "</td>");
-		        table.append("</tr>");    
-            } // while (rs.next())
-            //table.append("</table>");
-		    rs.close();
-		    stmt.close();
-		    con.close();
-	    }
-        catch (Exception e){
-	        msg = e.getMessage();
-	    }
-    }
 %><!DOCTYPE HTML>
 <meta charset="UTF-8">
 <html>
 
 <head>
-    <title>个人中心</title>
+    <title>通知公告</title>
     <script src="js/menu.js"></script>
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/nav.css">
     <link rel="stylesheet" href="css/subnav.css">
     <link rel="stylesheet" href="css/indexline.css">
     <link rel="stylesheet" href="css/colsleft.css">
-    <!-- <link rel="stylesheet" href="css/cols02.css"> -->
     <link rel="stylesheet" href="css/quicklinks.css">
     <link rel="stylesheet" href="css/sublinks.css">
     <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="css/body.css">
     <style>
-        table {
-            /* border-collapse: collapse */
-            border-color: #FFFFFF;
-            color: #FFF;
-            margin: 0 auto;
-        }
-
-        td,
-        th {
-            height: 40px;
-            width: 240px;
-            text-align: center
-        }
-
-        caption {
-            font-size: 20px;
-            font-weight: bold;
-        }
-
-
-
         p {
             margin: 0px;
             padding: 0px;
@@ -95,8 +33,6 @@
             position: relative;
             padding: 0px;
         }
-
-
 
         #subnav {
             width: 998px;
@@ -116,7 +52,9 @@
             padding: 0px 0px 5px 0px;
         }
 
-
+        #mainbody {
+            height: 500px;
+        }
 
         #quicklinks {
             width: 998px;
@@ -162,11 +100,9 @@
     </style>
 </head>
 
-<body link="#FFFFFF" alink="FFFFFF" vlink="FFFFFF">
+<body>
     <div id="header">
-        <!-- <div id="logo">
-            <img src="images/logo.jpg" alt="中山大学">
-        </div> -->
+
         <div id="version">
             <a href="index.jsp">
                 <img src="images/header1.png" alt="体育场馆在线预约系统" border="0"></a>
@@ -191,30 +127,48 @@
     <!--nav end-->
 
 
+
     <div id="main">
-        <div id="mainbody" style="height: 400px;">
-            <div id="indexline" style="height: 400px;">
-                
-                <table border="1">
-                    <caption>个人中心</caption>
-                    <thead>
-                        <tr>
-                            <th>姓名：</th>
-                            <th><%=name%></th>
-                        </tr>
-                        <tr>
-                            <th>学号：</th>
-                            <th><%=id%></th>
-                        </tr>
-                        <tr>
-                            <th colspan="2">订单记录</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <%=table%>
-                    </tbody>
-                </table>
-                
+        <div id="mainbody">
+            <div id="mainbody">
+
+
+                <div class="cols">
+                    <div class="colsleft">
+                        <div class="clear"></div>
+                        <div class="channel gonggao">
+                            <h3>通知公告</h3>
+                            <div id="newslist01" class="">
+                                <ul id="xsyg01">
+                                    <li><a href="announce1.html" target="_blank" title="羽毛球场">省大运会 | 女甲排球队勇夺金牌，十年八冠再续辉煌
+                                            ·····································································································6-6</a>
+                                    </li>
+                                    <li><a href="announce2.html" target="_blank" title="篮球场">省大运会 |
+                                            我校体育部在广东省第十一届大学生运动会科学论文报告会获佳绩
+                                            ····································································6-6
+                                        </a></li>
+                                    <li><a href="announce3.html" target="_blank" title="乒乓球场">省大运会 |
+                                            喜讯！我校网球代表队斩获甲组团体总分第一
+                                            ·······························································································6-6</a>
+                                    </li>
+                                    <li><a href="announce4.html" target="_blank" title="游泳馆">省大运会 | 4金4银1铜！我校武术队赛场奏响凯歌
+                                            ·········································································································6-6</a>
+                                    </li>
+                                    <li><a href="announce5.html" target="_blank" title="足球场">体育部召开冠军一流课程建设推进会
+                                            &nbsp;·························································································································6-6</a>
+                                    </li>
+                                    <li>
+                                        <a href="announce6.html" target="_blank" title="网球场">2022年春季学期体能提高班圆满结束
+                                            ·························································································································6-6</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- colsleft end -->
+
+                </div>
+                <!-- cols end -->
             </div>
             <!--mainbody end-->
 
@@ -226,9 +180,6 @@
     <!--main end-->
 
     <div id="footer">
-        <!-- <div class="bottomlogo">
-            <img src="images/logo-bottom.jpg">
-        </div> -->
         <div class="bottomcontact_cn">通讯地址: GZ市大山中学体育馆 邮编: 111111<br>
             电话: 020-7777-7777</div>
         <div class="bottomcontact_en">

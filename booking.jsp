@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" 
+<%@ page language="java" import="java.util.*,java.sql.*" 
          contentType="text/html; charset=utf-8"%>
 <%request.setCharacterEncoding("utf-8");%>
 
@@ -10,7 +10,7 @@
     String day = "";
     String type = "";
     String time = "";
-    String s_id = "";
+    String s_id = "123";
 
     String connectString = "jdbc:mysql://172.18.187.253:3306/boke19335016"
     + "?autoReconnect=true&useUnicode=true"
@@ -27,6 +27,7 @@
 
     type = request.getParameter("type");
 
+    // TODO
     //s_id = session.getAttribute("userid");
 
     if (year == null || month == null || day == null || time == null || type == null){
@@ -39,39 +40,42 @@
 
 	try{
 
-        //Class.forName("com.mysql.jdbc.Driver");
-		//Connection con=DriverManager.getConnection(connectString, 
-        //                "user", "123");
-		//Statement stmt=con.createStatement();
+        Class.forName("com.mysql.jdbc.Driver");
+		Connection con=DriverManager.getConnection(connectString, 
+                        "user", "123");
+		Statement stmt=con.createStatement();
 
 
-        String s="select 10 - count(*) from booking where time = '" +time+ "' and type = '"
+        String s="select count(*) from booking where time = '" +time+ "' and type = '"
             +type+ "' and year = '" + year +"' and month ='" + month +"' and day = '" + day + "'";
 
-        //ResultSet rs=stmt.executeQuery(s);
+        ResultSet rs=stmt.executeQuery(s);
 
-        //if(rs.next()) {
-            //String nums =  rs.getString("count(*)");
-            //int numi = Integer.valueOf(nums).intValue();
+        if(rs.next()) {
+            String nums =  rs.getString("count(*)");
+            int numi = Integer.valueOf(nums).intValue();
+            numi = 10-numi;
             if(numi>0){
                 s = "insert into booking(type, time, year, month, day, s_id) values('" + type + "', '" 
                     + time + "', '" + year + "', '" + month + "', '" + day + "', '" + s_id + "')";
 
-                //int rs2=stmt.executeUpdate(s);
-                //if(rs2>0){
+                int rs2=stmt.executeUpdate(s);
+                if(rs2>0){
                 msg = "预约成功!";
-                //}
-                //else{
-                //    msg="数据库错误";
-                //}
+                }
+                else{
+                    msg="数据库错误";
+                }
             }
             else{
                 msg="预约失败，该时段场馆位置已满";
             }
 
-	    //stmt.close();
-	    //con.close();
+        rs.close();
+	    stmt.close();
+	    con.close();
 	    }
+    }
 	catch (Exception e){
 	    msg = e.getMessage();
 	}
@@ -84,7 +88,7 @@
 <html>
 
 <head>
-    <title>羽毛球场预约</title>
+    <title>预约系统</title>
     <script src="js/menu.js"></script>
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/nav.css">
@@ -181,13 +185,19 @@
         #footer {
             width: 958px;
             height: 85px;
-
             font-size: 12px;
             color: #FFFFFF;
 
             padding: 20px 20px;
             margin: 0px auto;
             height: 105px;
+        }
+
+        #messagebox{
+            margin: 20px 0 0 0;
+            text-align: center;
+            color: #FFF;
+            font-size: 25px;
         }
 
         /* frame end */
@@ -226,9 +236,7 @@
         <div id="mainbody" style="height: 550px;">
             <div id="indexline" style="height: 550px; ">
                 <br>
-                <%=msg%>
-                 <br><br>
-                <a href="index.jsp" align="center">返回首页</a>
+                <p id="messagebox"> <%=msg%> </p>
 
             </div>
             <!--mainbody end-->

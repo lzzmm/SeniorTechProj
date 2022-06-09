@@ -3,6 +3,7 @@
 <%request.setCharacterEncoding("utf-8");%>
 
 <%
+    String title = "羽毛球场预约";
 	String msg = "";
     String year = "";
     String month  = "";
@@ -45,7 +46,7 @@
 		Connection con = DriverManager.getConnection(connectString, "user", "123");
         PreparedStatement stmt=con.prepareStatement(s);
 
-        table.append("<table border= '1'><caption>羽毛球场预约 &nbsp;"+year+"年"+month+"月"+day+"日</caption>");
+        table.append("<table border= '1'>");
         table.append("<tr><th>时间段</th><th>剩余数量</th><th>操作</th></tr>");
 
         String[] timearray ={"10001100", "11001200", "14001500", "15001600", "16001700", "17001800", "18001900", "19002000", "20002100"};
@@ -133,6 +134,13 @@
             color: #FFF;
         }
 
+        #secondheader{
+            color: #FFF;
+            text-align: center;  
+            font-size: 30px;   
+            margin: 10px 0 10px 0;       
+        }
+
 
         /* frame */
         #header {
@@ -209,7 +217,7 @@
 
         #inputbox,
         #messagebox{
-            margin: 10px 0 0 0;
+            margin: 10px 0 10px 0;
             text-align: center;
             color: #FFF;
             font-size: 15px;
@@ -250,6 +258,7 @@
     <div id="main">
         <div id="mainbody" style="height: 550px;">
             <div id="indexline" style="height: 550px; ">
+                <p id="secondheader"><%=title%></p>
                 <form action="booking-badminton.jsp" method="post" name="f" id="inputbox">
                     <label> &nbsp; 预约日期: &nbsp; </label>
                     <select name="year">
@@ -307,7 +316,6 @@
                      日 &nbsp;
                      <input name="query" type="submit" value="查询">
                 </form> 
-                <br>
                 <p id="messagebox"> <%=msg%> </p>
                 <%=table%>
 

@@ -4,7 +4,6 @@
 
 <%
 	String msg = "";
-
     String year = "";
     String month  = "";
     String day = "";
@@ -12,6 +11,7 @@
     String time = "";
     String s_id = "";
     int isbook=1;
+    int max = 0;
 
     String connectString = "jdbc:mysql://172.18.187.253:3306/boke19335016"
     + "?autoReconnect=true&useUnicode=true"
@@ -28,9 +28,8 @@
 
     type = request.getParameter("type");
 
-    // TODO
     s_id = (String) session.getAttribute("userid");
-    
+
     if (year == null || month == null || day == null || time == null || type == null){
         msg="内部错误";
     }
@@ -38,7 +37,25 @@
         msg="用户未登录";
     }
     else{
-
+        if(type.equals("badminton")){
+            max=8;
+        }
+        else if(type.equals("basketball")){
+            max=12;
+        }
+        else if(type.equals("table-tennis")){
+            max=16;
+        }   
+        else if(type.equals("tennis")){
+            max=6;
+        }   
+        else if(type.equals("football")){
+            max=4;
+        }   
+        else if(type.equals("swimming")){
+            max=20;
+        }   
+        
 	try{
 
         Class.forName("com.mysql.jdbc.Driver");

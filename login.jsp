@@ -16,8 +16,9 @@
 					+ "?autoReconnect=true&useUnicode=true"
 					+ "&characterEncoding=UTF-8"; 
 	String id = request.getParameter("id");
+    String name = request.getParameter("name");
     String pwd = request.getParameter("pwd");
-    StringBuilder rstable=new StringBuilder("");
+    StringBuilder rstable = new StringBuilder("");
 	try{
       if (request.getParameter("id") == null || request.getParameter("id").isEmpty()) {
         rstable.append("<br><text> 学号不可为空！</text><br>"); // TODO: judge and show in frontend 
@@ -46,29 +47,35 @@
 		stmt.close();
 		con.close();
 	  } // if(request.getParameter("login") != null)
-      else if (request.getParameter("register") != null) { // TODO
-        Class.forName("com.mysql.jdbc.Driver");
-		Connection con=DriverManager.getConnection(connectString, "user", "123");
-		PreparedStatement stmt=con.prepareStatement("select * from " + tableName + " where s_id = ?");
-        stmt.setString(1, id);
-        ResultSet rs=stmt.executeQuery();
-		if (rs.next()) {
-            rstable.append("<br><text>学号: " + rs.getString("s_id") + " 已存在！请登录！ </text><br>");
-        } // if (rs.next())
-        else {
-            PreparedStatement stmt2=con.prepareStatement("insert into " + tableName + " (s_id, password) values (?, ?)");
-            stmt2.setString(1, id);
-            stmt2.setString(2, pwd);
-            stmt2.executeUpdate();
-		    stmt2.close();
-            rstable.append("<br><text> 学号：" + id + " 注册成功！</text><br>");
-            rstable.append("<br><text> 登录成功！</text><br>");
-            session.setAttribute("userid", id);
-            response.sendRedirect("index.jsp");
-        } // else
-		rs.close();
-		stmt.close();
-		con.close();
+      else if (request.getParameter("register") != null) {
+        if (name == null || name.isEmpty()) {
+            rstable.append("<br><text> 姓名不可为空！</text><br>");
+        } else {
+            Class.forName("com.mysql.jdbc.Driver");
+		    Connection con=DriverManager.getConnection(connectString, "user", "123");
+		    PreparedStatement stmt=con.prepareStatement("select * from " + tableName + " where s_id = ?");
+            stmt.setString(1, id);
+            ResultSet rs=stmt.executeQuery();
+		    if (rs.next()) {
+                rstable.append("<br><text>学号: " + rs.getString("s_id") + " 已存在！请登录！ </text><br>");
+            } // if (rs.next())
+            else {
+                PreparedStatement stmt2=con.prepareStatement("insert into " + tableName + " (s_id, name, password) values (?, ?, ?)");
+                stmt2.setString(1, id);
+                stmt2.setString(2, name);
+                stmt2.setString(3, pwd);
+                stmt2.executeUpdate();
+		        stmt2.close();
+                rstable.append("<br><text> 学号：" + id + " 姓名：" + name + " 注册成功！</text><br>");
+                rstable.append("<br><text> 登录成功！</text><br>");
+                session.setAttribute("userid", id);
+                session.setAttribute("username", name);
+                response.sendRedirect("index.jsp");
+            } // else
+		    rs.close();
+		    stmt.close();
+		    con.close();
+        }
       }
 	}
 	catch (Exception e){
@@ -254,7 +261,13 @@
                 <fieldset id="filed" style="background-color: #03437b;">
                     <form action="login.jsp" method="post">
                         <p><label for="title" style="color: #FFFFFF; font-size: 24px;">学号: </label>
-                            <input name="id" type="text" maxlength=16 placeholder="请输入学号" value="${param.id}" style="font-size: 24px;">
+                            <input name="id" type="text" maxlength=16 placeholder="请输入学号" value="${param.id}" onblur="" style="font-size: 24px;">
+                        </p>
+                        <p>
+                            &nbsp;
+                        </p>
+                        <p><label for="title" style="color: #FFFFFF; font-size: 24px;">姓名: </label>
+                            <input name="name" type="text" maxlength=20 placeholder="注册时请输入姓名" value="${param.name}" style="font-size: 24px;">
                         </p>
                         <p>
                             &nbsp;

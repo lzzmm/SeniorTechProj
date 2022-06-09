@@ -125,7 +125,7 @@
         </a> -->
         <% } else { %>
         <div id="searchbox" style = "width: 200px; font-size: 18px; color: #FFFFFF;">
-        欢迎您, <text style = "font-size: 20px;"><%=session.getAttribute("userid")%></text> &nbsp;
+        欢迎您, <text style = "font-size: 20px;"><%=session.getAttribute("username")%></text> &nbsp;
         <form action="index.jsp" method="post" style = "float: right">
             <button name="logout" type="submit" id="logout">注销</button>
         </form>
@@ -155,7 +155,7 @@
             <span class="sp" id="tag6"
                   onmouseover="switchTag('tag6','subnav6');this.blur();">通知公告</span>
         </a> |
-        <a href="profile.html">
+        <a href="profile.jsp">
             <span class="sp" id="tag4"
                   onmouseover="switchTag('tag4','subnav4');this.blur();">个人中心</span>
         </a>

@@ -152,7 +152,7 @@
                     </td>
 
                     <td id="field_table">
-                        <a href="booking-basketball.html">
+                        <a href="booking-basketball.jsp">
                             <img src="images/small-basketball.jpg" id="field">
                             <p id="field">
                                 篮球场
@@ -161,7 +161,7 @@
                     </td>
 
                     <td id="field_table">
-                        <a href="booking-tennis.html">
+                        <a href="booking-tennis.jsp">
                             <img src="images/small-tennis.webp" id="field">
                             <p id="field">
                                 网球场
@@ -172,7 +172,7 @@
 
                 <tr></tr>
                 <td id="field_table">
-                    <a href="booking-table-tennis.html">
+                    <a href="booking-table-tennis.jsp">
                         <img src="images/small-table-tennis.webp" id="field">
                         <p id="field">
                             乒乓球场
@@ -181,7 +181,7 @@
                 </td>
 
                 <td id="field_table">
-                    <a href="booking-swimming.html">
+                    <a href="booking-swimming.jsp">
                         <img src="images/small-swimming-pool.webp" id="field">
                         <p id="field">
                             游泳馆
@@ -190,7 +190,7 @@
                 </td>
 
                 <td id="field_table">
-                    <a href="booking-football.html">
+                    <a href="booking-football.jsp">
                         <img src="images/small-football.webp" id="field">
                         <p id="field">
                             足球场

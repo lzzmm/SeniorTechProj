@@ -98,7 +98,7 @@
                 msg = "预约成功!";
             }
             else{
-                msg="数据库错误";
+                msg="预约失败";
             }
         }
         
@@ -118,7 +118,7 @@
 <html>
 
 <head>
-    <title>预约系统</title>
+    <title>体育场馆在线预约系统</title>
     <script src="js/menu.js"></script>
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/nav.css">
@@ -264,6 +264,7 @@
     <div id="main">
         <div id="mainbody" style="height: 550px;">
             <div id="indexline" style="height: 550px; ">
+                <h1 id="secondheader">体育场馆在线预约系统</h1>
                 <br>
                 <p id="messagebox"> <%=msg%> </p>
 

@@ -8,7 +8,7 @@
     String month  = "";
     String day = "";
     int showTable = 1;
-    int max=8;
+    int max=2;
 
 	String connectString = "jdbc:mysql://172.18.187.253:3306/boke19335016"
 					+ "?autoReconnect=true&useUnicode=true"
@@ -48,7 +48,7 @@
 
 	    try{
 
-        String s="select count(*) from booking where time = ? and type = 'badminton' and year = '" 
+        String s="select count(*) from booking where time = ? and type = 'football' and year = '" 
             + year +"' and month ='" + month +"' and day = '" + day + "'";
             
 		Class.forName("com.mysql.jdbc.Driver");
@@ -58,9 +58,9 @@
         table.append("<table border= '1'>");
         table.append("<tr><th>时间段</th><th>剩余数量</th><th>操作</th></tr>");
 
-        String[] timearray ={"10:00 - 11:00", "11:00 - 12:00", "14:00 - 15:00", "15:00 - 16:00", "16:00 - 17:00", "17:00 - 18:00", "18:00 - 19:00", "19:00 - 20:00", "20:00 - 21:00"};
+        String[] timearray ={"10:00 - 12:00", "14:00 - 16:00", "16:00 - 18:00", "19:00 - 22:00"};
         
-        for(int i=0;i<9;i++){
+        for(int i=0;i<4;i++){
         table.append("<tr><td>"+timearray[i]+"</td>");
         stmt.setString(1, timearray[i]);
         ResultSet rs=stmt.executeQuery();
@@ -71,7 +71,7 @@
             nums = String.valueOf(numi);
             table.append("<td>" + nums + "</td>");
             if(numi>0){
-                String url = "booking.jsp?type=badminton&time="+timearray[i]+"&year="+year+"&month="+month+"&day="+day;
+                String url = "booking.jsp?type=football&time="+timearray[i]+"&year="+year+"&month="+month+"&day="+day;
                 table.append("<td><a href='" + url + "'>点击预约</a> </td></tr>");
             }
             else{
@@ -100,7 +100,7 @@
 <html>
 
 <head>
-    <title>羽毛球场预约</title>
+    <title>足球场预约</title>
     <script src="js/menu.js"></script>
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/nav.css">
@@ -255,7 +255,7 @@
                 onmouseover="switchTag('tag3','subnav3');this.blur();">预订中心</span></a> |
         <a href="introduction-center.html"><span class="sp" id="tag5"
                 onmouseover="switchTag('tag5','subnav5');this.blur();">场馆简介</span></a> |
-        <a href="announcement.jsp"><span class="sp" id="tag6"
+        <a href="announcement.html"><span class="sp" id="tag6"
                 onmouseover="switchTag('tag6','subnav6');this.blur();">通知公告</span></a> |
         <a href="profile.jsp"><span class="sp" id="tag4"
                 onmouseover="switchTag('tag4','subnav4');this.blur();">个人中心</span></a>
@@ -266,8 +266,8 @@
     <div id="main">
         <div id="mainbody" style="height: 550px;">
             <div id="indexline" style="height: 550px; ">
-                <h2 id="secondheader">羽 毛 球 场 预 约</h2>
-                <form action="booking-badminton.jsp" method="post" name="f" id="inputbox">
+                <h2 id="secondheader">足 球 场 预 约</h2>
+                <form action="booking-football.jsp" method="post" name="f" id="inputbox">
                     <label> &nbsp; 预约日期: &nbsp; </label>
                     <select name="year">
                         <option value="2022"  <%=month.equals("2022")?"selected":""%>>2022</option>

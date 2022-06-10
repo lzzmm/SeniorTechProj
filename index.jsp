@@ -245,20 +245,20 @@
                                                 <a href="booking-badminton.jsp" target="_blank" title="羽毛球场">羽毛球场</a>
                                             </li>
                                             <li>
-                                                <a href="booking-basketball.html" target="_blank" title="篮球场">
+                                                <a href="booking-basketball.jsp" target="_blank" title="篮球场">
                                                     篮球场
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="booking-table-tennis..html" target="_blank"
+                                                <a href="booking-table-tennis.jsp" target="_blank"
                                                    title="乒乓球场">乒乓球场</a>
                                             </li>
-                                            <li><a href="booking-swimming.html" target="_blank" title="游泳馆">游泳馆</a></li>
+                                            <li><a href="booking-swimming.jsp" target="_blank" title="游泳馆">游泳馆</a></li>
                                             <li>
-                                                <a href="booking-football.html" target="_blank" title="足球场">足球场</a>
+                                                <a href="booking-football.jsp" target="_blank" title="足球场">足球场</a>
                                             </li>
                                             <li>
-                                                <a href="booking-tennis.html" target="_blank" title="网球场">网球场</a>
+                                                <a href="booking-tennis.jsp" target="_blank" title="网球场">网球场</a>
                                             </li>
                                         </ul>
                                     </div>

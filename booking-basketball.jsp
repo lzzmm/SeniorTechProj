@@ -39,7 +39,7 @@
         java.text.SimpleDateFormat formatter = new SimpleDateFormat( "yyyyMMdd ");
         String today = formatter.format(new Date());
 
-        if(date1.compareTo(today) <= 0) {
+        if(showTable == 1 && date1.compareTo(today) <= 0) {
             msg="请选择未来的日期";
             showTable=0;
         }

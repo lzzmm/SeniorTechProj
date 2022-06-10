@@ -2,7 +2,7 @@
          contentType="text/html; charset=utf-8"
 %><%
 	request.setCharacterEncoding("utf-8");
-    // TODO: session and cookie
+    // TODO: redirect to orgin page
     if(session.getAttribute("userid") == null) {
         // TODO: try auto login 
     } else {
@@ -87,144 +87,7 @@
 <head>
     <title>用户登录 </title>
     <base target="_self">
-    <script src="js/menu.js"></script>
-    <link rel="stylesheet" href="css/header.css">
-    <link rel="stylesheet" href="css/nav.css">
-    <link rel="stylesheet" href="css/subnav.css">
-    <link rel="stylesheet" href="css/indexline.css">
-    <link rel="stylesheet" href="css/colsleft.css">
-    <link rel="stylesheet" href="css/quicklinks.css">
-    <link rel="stylesheet" href="css/sublinks.css">
-    <link rel="stylesheet" href="css/footer.css">
-    <link rel="stylesheet" href="css/body.css">
-    <style>
-        .form-control:focus {
-            border-color: #66afe9;
-            outline: 0;
-            -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
-            box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6)
-        }
-
-        input[type="text"],
-        textarea {
-            color: grey
-        }
-
-        input[type="text"],
-        input[type="password"],
-        input[type="submit"] {
-            width: 500px;
-
-        }
-
-        [for="content"] {
-            vertical-align: top;
-        }
-
-        fieldset {
-            width: 600px;
-            margin: 20px auto;
-            padding: 20px;
-            background-color: #FCFCFF;
-            font-size: 18px;
-        }
-
-        input {
-            height: 50px;
-        }
-
-        textarea:focus,
-        input:focus {
-
-            border-color: #66afe9;
-            outline: 0;
-            -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
-            box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6)
-        }
-
-        p {
-            margin: 0px;
-            padding: 0px;
-        }
-
-
-
-        /* frame */
-        #header {
-            width: 998px;
-            height: 108px;
-
-            margin: 0px auto;
-            position: relative;
-            padding: 0px;
-        }
-
-        #subnav {
-            width: 998px;
-            height: 41px;
-
-            font-size: 13px;
-            margin: 0 auto;
-            text-align: left;
-            color: #006600;
-            line-height: 40px;
-        }
-
-        #main {
-            background-color: #FFFFFF;
-
-            overflow: hidden;
-            padding: 0px 0px 5px 0px;
-        }
-
-        #mainbody {
-            width: 998px;
-            height: 700px;
-            margin: 0px auto;
-            padding: 2px;
-        }
-
-        #quicklinks {
-            width: 998px;
-            height: 20px;
-
-            font-size: 14px;
-            color: #000000;
-            background: #D1D1D1;
-
-            padding: 12px 0px 7px 0px;
-            margin: 0px auto;
-            word-spacing: 5px;
-            font-weight: bold;
-        }
-
-        #sublinks {
-            width: 958px;
-            height: 20px;
-
-            font-size: 12px;
-            color: #000000;
-            background: #D1D1D1;
-
-            padding: 10px 20px;
-            margin: 0px auto;
-            word-spacing: 6px;
-        }
-
-        #footer {
-            width: 958px;
-            height: 85px;
-
-            font-size: 12px;
-            color: #FFFFFF;
-
-            padding: 20px 20px;
-            margin: 0px auto;
-            height: 105px;
-        }
-
-        /* frame end */
-    </style>
+    <%@ include file="common/header.html" %>
 </head>
 
 <body>
@@ -245,9 +108,9 @@
                 onmouseover="switchTag('tag2','subnav2');this.blur();">首页</span></a> |
         <a href="booking-center.jsp"><span class="sp" id="tag3"
                 onmouseover="switchTag('tag3','subnav3');this.blur();">预订中心</span></a> |
-        <a href="introduction-center.html"><span class="sp" id="tag5"
+        <a href="introduction-center.jsp"><span class="sp" id="tag5"
                 onmouseover="switchTag('tag5','subnav5');this.blur();">场馆简介</span></a> |
-        <a href="announcement.html"><span class="sp" id="tag6"
+        <a href="announcement.jsp"><span class="sp" id="tag6"
                 onmouseover="switchTag('tag6','subnav6');this.blur();">通知公告</span></a> |
         <a href="profile.jsp"><span class="sp" id="tag4"
                 onmouseover="switchTag('tag4','subnav4');this.blur();">个人中心</span></a>
@@ -305,24 +168,7 @@
     </div>
     <!--main end-->
 
-    <div id="footer">
-        <!-- <div class="bottomlogo">
-            <img src="images/logo-bottom.jpg">
-        </div> -->
-        <div class="bottomcontact_cn">通讯地址: GZ市大山中学体育馆 邮编: 111111<br>
-            电话: 020-7777-7777</div>
-        <div class="bottomcontact_en">
-            Address: Big Mountain Middle School Gym, GZ市, 111111, P. R. China<br>
-            TEL: +86-20-84112828
-        </div>
-        <div class="clear"></div>
-        <div class="copyright">大山中学版权所有 COPYRIGHT &copy; 1573 - 2022 , BMSG - <a href="#">联系我们</a> - <a
-                href="#">网站地图</a>
-            -
-            <a href="#">粤ICP备12345678号</a>
-        </div>
-    </div>
-    <!--footer end-->
+    <%@ include file="common/footer.html" %>
 
 </body>
 

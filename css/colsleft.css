@@ -1,101 +1,101 @@
-       #mainbody .cols {
-            overflow: hidden;
-        }
+#mainbody .cols {
+    overflow: hidden;
+}
 
-        #mainbody .colsleft {
-            width: 998px;
-            float: left;
-            overflow: hidden;
-        }
-
-  
-
-        #mainbody .cols01 {
-            width: 494px;
-            margin: 5px 5px 0px 0px;
-            float: left;
-        }
+#mainbody .colsleft {
+    width: 998px;
+    float: left;
+    overflow: hidden;
+}
 
 
-        .channel_shadow {
-            padding: 0px 0px 5px 0px;
-            background: url(../images/bo-shadow.jpg) no-repeat bottom center;
-        }
 
-        .channel {
-            border: 1px #CCCCCC solid;
-            padding: 0px;
-            background: #FFFFFF;
-            margin: 0px;
-            font-size: larger;
-        }
+#mainbody .cols01 {
+    width: 494px;
+    margin: 5px 5px 0px 0px;
+    float: left;
+}
 
-        H3 {
-            padding: 0px 0px 12px 5px;
-            margin: 16px 15px 5px 15px;
-            color: #1a93de;
-            font-size: 18px;
-            font-weight: bold;
-            background: url(../images/line.gif) repeat-x bottom;
-        }
 
-        .newsmore {
-            float: right;
-            padding: 0px 10px 0px 10px;
-            font-weight: normal;
-            font-size: 12px;
-        }
+.channel_shadow {
+    padding: 0px 0px 5px 0px;
+    background: url(../images/bo-shadow.jpg) no-repeat bottom center;
+}
 
-        #sysunews01, #sysunews03 {
-            padding: 0px 15px 0px 0px;
-            margin: 0px 5px 0px 0px;
-            background: url(../images/title-spe.jpg) right no-repeat;
-            cursor: pointer;
-        }
+.channel {
+    border: 1px #CCCCCC solid;
+    padding: 0px;
+    background: #FFFFFF;
+    margin: 0px;
+    font-size: larger;
+}
 
-        .channel LI {
-            padding-left: 12px;
-            background: url(../images/dot.png) no-repeat left;
-            font-size: 12px;
-            font-weight: normal;
-            line-height: 28px;
-        }
+H3 {
+    padding: 0px 0px 12px 5px;
+    margin: 16px 15px 5px 15px;
+    color: #1a93de;
+    font-size: 18px;
+    font-weight: bold;
+    background: url(../images/line.gif) repeat-x bottom;
+}
 
-        LI {
-            list-style: none;
-            margin: 0px;
-            padding: 0px;
-        }
+.newsmore {
+    float: right;
+    padding: 0px 10px 0px 10px;
+    font-weight: normal;
+    font-size: 12px;
+}
 
-        .channel UL {
-            padding: 10px 15px 18px 20px;
-        }
+#sysunews01, #sysunews03 {
+    padding: 0px 15px 0px 0px;
+    margin: 0px 5px 0px 0px;
+    background: url(../images/title-spe.jpg) right no-repeat;
+    cursor: pointer;
+}
 
-        #mainbody .gonggao {
-            margin: 0px 5px 5px 0px;
-        }
+.channel LI {
+    padding-left: 12px;
+    background: url(../images/dot.png) no-repeat left;
+    font-size: 12px;
+    font-weight: normal;
+    line-height: 28px;
+}
 
-        .commontext {
-            font-size: 18px;
-            margin: 5px 15px;
-            padding: 10px 20px 10px 20px;
-            color: #999999;
-            line-height: 20px;
-            font-weight: normal;
-        }
+LI {
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+}
 
-        .channel A:link, .channel A:visited, .channel A:active {
-            font-size: 16px;
-            font-weight: normal;
-            text-decoration: none;
-            color: #000000;
-        }
+.channel UL {
+    padding: 10px 15px 18px 20px;
+}
 
-        .clear {
-            clear: both;
-        }
-  
-        ol, ul {
-            margin: 0px;
-            padding: 0px;
-        }
+#mainbody .gonggao {
+    margin: 0px 5px 5px 0px;
+}
+
+.commontext {
+    font-size: 18px;
+    margin: 5px 15px;
+    padding: 10px 20px 10px 20px;
+    color: #999999;
+    line-height: 20px;
+    font-weight: normal;
+}
+
+.channel A:link, .channel A:visited, .channel A:active {
+    font-size: 16px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #000000;
+}
+
+.clear {
+    clear: both;
+}
+
+ol, ul {
+    margin: 0px;
+    padding: 0px;
+}

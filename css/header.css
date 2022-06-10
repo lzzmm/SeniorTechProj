@@ -1,4 +1,22 @@
- /* header */ 
+ /* header */
+#header {
+    width: 998px;
+    height: 108px;
+    margin: 0px auto;
+    position: relative;
+    padding: 0px;
+}
+
+#subnav {
+    width: 998px;
+    height: 41px;
+    font-size: 13px;
+    margin: 0 auto;
+    text-align: left;
+    color: #006600;
+    line-height: 40px;
+}
+
  #logo {
   bottom: 10px;
   position: absolute;

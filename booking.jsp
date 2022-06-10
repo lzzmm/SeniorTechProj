@@ -241,6 +241,7 @@
             <a href="index.jsp">
                 <img src="images/header1.png" alt="体育场馆在线预约系统" border="0"></a>
         </div>
+        <%@ include file="common/autologin.jsp" %>
     </div>
     <!--header end-->
 
@@ -250,7 +251,7 @@
                 onmouseover="switchTag('tag2','subnav2');this.blur();">首页</span></a> |
         <a href="booking-center.jsp"><span class="sp" id="tag3"
                 onmouseover="switchTag('tag3','subnav3');this.blur();">预订中心</span></a> |
-        <a href="introduction-center.html"><span class="sp" id="tag5"
+        <a href="introduction-center.jsp"><span class="sp" id="tag5"
                 onmouseover="switchTag('tag5','subnav5');this.blur();">场馆简介</span></a> |
         <a href="announcement.jsp"><span class="sp" id="tag6"
                 onmouseover="switchTag('tag6','subnav6');this.blur();">通知公告</span></a> |

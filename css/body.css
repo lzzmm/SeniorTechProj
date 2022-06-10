@@ -5,6 +5,7 @@ body {
     margin: 0px;
     padding: 0px;
     background: #7b0414;
+/*    height: 100%;*/
 }
 
 #mainbody {
@@ -13,3 +14,114 @@ body {
     margin: 0px auto;
     padding: 2px;
 }
+.form-control:focus {
+    border-color: #66afe9;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6)
+}
+
+input[type="text"],
+textarea {
+    color: grey
+}
+
+input[type="text"],
+input[type="password"],
+input[type="submit"] {
+    width: 500px;
+}
+
+[for="content"] {
+    vertical-align: top;
+}
+
+fieldset {
+    width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #FCFCFF;
+    font-size: 18px;
+}
+
+#field {
+    width: 200px;
+    height: 150px;
+    text-align: center;
+}
+
+#field_table {
+    width: 250px;
+}
+
+td,
+th {
+    height: 40px;
+    width: 240px;
+    text-align: center
+}
+
+caption {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+
+input {
+    height: 50px;
+}
+
+    textarea:focus,
+    input:focus {
+        border-color: #66afe9;
+        outline: 0;
+        -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
+        box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6)
+    }
+
+p {
+    margin: 0px;
+    padding: 0px;
+}
+
+/* frame */
+
+
+#main {
+    background-color: #FFFFFF;
+    overflow: hidden;
+    padding: 0px 0px 5px 0px;
+    min-height: 100%;
+/*    margin: 0 auto -105px;*/
+}
+
+#mainbody {
+    width: 998px;
+    height: 700px;
+    margin: 0px auto;
+    padding: 2px;
+}
+
+#quicklinks {
+    width: 998px;
+    height: 20px;
+    font-size: 14px;
+    color: #000000;
+    background: #D1D1D1;
+    padding: 12px 0px 7px 0px;
+    margin: 0px auto;
+    word-spacing: 5px;
+    font-weight: bold;
+}
+
+#sublinks {
+    width: 958px;
+    height: 20px;
+    font-size: 12px;
+    color: #000000;
+    background: #D1D1D1;
+    padding: 10px 20px;
+    margin: 0px auto;
+    word-spacing: 6px;
+}
+/* frame end */

@@ -112,29 +112,7 @@
                 <img src="images/header1.png" alt="体育场馆在线预约系统" border="0">
             </a>
         </div>
-
-        <% if(session.getAttribute("userid") == null) { %>
-        <form name="login" action="login.jsp" target="_self">
-            <div id="searchbox">
-                <a>
-                    <input type="button" id="loginbutton" name="sbtn" onclick="submit()">
-                </a>
-            </div>
-        </form>
-        <!-- <a href="login.jsp" target="_blank">
-            <button id="loginbutton">登录</button>
-        </a> -->
-        <% } else { %>
-        <div id="searchbox" style = "width: 200px; font-size: 18px; color: #FFFFFF;">
-        欢迎您, <text style = "font-size: 20px;"><%=session.getAttribute("username")%></text> &nbsp;
-        <form action="index.jsp" method="post" style = "float: right">
-            <button name="logout" type="submit" id="logout">注销</button>
-        </form>
-        <%=msg%>
-        </div>
-        <% } %>
-
-
+    <%@ include file="common/autologin.jsp" %>
     </div>
     <!--header end-->
 
@@ -148,7 +126,7 @@
             <span class="sp" id="tag3"
                   onmouseover="switchTag('tag3','subnav3');this.blur();">预订中心</span>
         </a> |
-        <a href="introduction-center.html">
+        <a href="introduction-center.jsp">
             <span class="sp" id="tag5"
                   onmouseover="switchTag('tag5','subnav5');this.blur();">场馆简介</span>
         </a> |
@@ -268,7 +246,7 @@
                         </div>
                         <div class="clear"></div>
                         <div class="channel gonggao">
-                            <h3><span class="newsmore"><a href="introduction-center.html">更多&gt;&gt;</a></span>场馆简介</h3>
+                            <h3><span class="newsmore"><a href="introduction-center.jsp">更多&gt;&gt;</a></span>场馆简介</h3>
                             <p class="commontext">
                                 <a href="introduction-badminton.html">羽毛球场</a>
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -298,22 +276,7 @@
     </div>
     <!--main end-->
 
-    <div id="footer">
-        <div class="bottomcontact_cn">
-            通讯地址: GZ市大山中学体育馆 邮编: 111111<br>
-            电话: 020-7777-7777
-        </div>
-        <div class="bottomcontact_en">
-            Address: Big Mountain Middle School Gym, GZ市, 111111, P. R. China<br>
-            TEL: +86-20-84112828
-        </div>
-        <div class="clear"></div>
-        <div class="copyright">
-            大山中学版权所有 COPYRIGHT &copy; 1573 - 2022 , BMSG - <a href="#">联系我们</a> - <a href="#">网站地图</a>
-            -
-            <a href="#">粤ICP备12345678号</a>
-        </div>
-    </div>
+    <%@ include file="common/footer.html" %>
     <!--footer end-->
 
 </body>

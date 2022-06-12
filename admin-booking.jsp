@@ -8,6 +8,7 @@
     String month  = "";
     String day = "";
     String type = "";
+    String s_id = "";
     String userid = (String)session.getAttribute("userid");
 	
 	String connectString = "jdbc:mysql://172.18.187.253:3306/boke19335016"
@@ -31,6 +32,7 @@
     year = request.getParameter("year");
     month = request.getParameter("month");
     day = request.getParameter("day");
+    s_id = request.getParameter("s_id");
     
     String s="select * from booking where year ='" + year + "'";
 
@@ -43,6 +45,9 @@
     if(!day.equals("")){
       s += "and day ='" + day + "'";
     }
+    if(!s_id.equals("")){
+      s += "and s_id ='" + s_id + "'";
+    }
 
 		try{
 		  Class.forName("com.mysql.jdbc.Driver");
@@ -53,13 +58,15 @@
 		  ResultSet rs=stmt.executeQuery(s);
 
 		  table.append("<table>");
-			table.append("<tr><th>编号</th><th>类型</th><th>日期</th><th>时间段</th><th>操作</th></tr>");
+			table.append("<tr><th>编号</th><th>类型</th><th>日期</th><th>时间段</th><th>学号</th><th>操作</th></tr>");
 			while(rs.next()) {
 				table.append("<tr>");
 				table.append("<td>" + rs.getString("b_id") + "</td>");
+        
 				table.append("<td>" + rs.getString("type") + "</td>");
-                table.append("<td>" + rs.getString("year") + "-" + rs.getString("month") + "-" + rs.getString("day") + "</td>");
-                table.append("<td>" + rs.getString("time") + "</td>");
+        table.append("<td>" + rs.getString("year") + "-" + rs.getString("month") + "-" + rs.getString("day") + "</td>");
+        table.append("<td>" + rs.getString("time") + "</td>");
+        table.append("<td>" + rs.getString("s_id") + "</td>");
 				table.append("<td>");
 				String url2 = "admin-booking-delete.jsp?id=" + rs.getString("b_id");
 				table.append("<a href='" + url2 + "'>删除</a></td>");
@@ -85,6 +92,7 @@
           border-collapse: collapse;
           border: none;
           width: 500px;
+          margin: auto;
    }
    td,th{
           border: solid grey 1px;            
@@ -103,17 +111,18 @@
   
   .container{  
     margin:0 auto;   
-    width:500px;  
+    width:600px;  
     text-align:center;  
   }  
   p {text-align:left;  }
+
 </style>
 </head>
 <body>
   <div class="container">
 	  <h1>预约记录管理系统</h1> 
     <form action="admin-booking.jsp" method="post" name="f" id="inputbox">
-      <label>场馆类型: </label>
+      <label>类型: </label>
       <select name="type">
           <option value="" <%=type.equals("")?"selected":""%>>全部</option>
           <option value="badminton" <%=type.equals("badminton")?"selected":""%>>羽毛球场</option>
@@ -123,7 +132,7 @@
           <option value="table-tennis" <%=type.equals("table-tennis")?"selected":""%>>乒乓球场</option>
           <option value="tennis" <%=type.equals("tennis")?"selected":""%>>网球场</option>
        </select>
-       &nbsp;&nbsp;
+       &nbsp;
       <label>日期: </label>
       <select name="year">
           <option value="2022" <%=year.equals("2022")?"selected":""%>>2022</option>
@@ -180,7 +189,10 @@
           <option value="31" <%=day.equals("31")?"selected":""%>>31</option>
        </select>
        日
-       &nbsp;&nbsp;
+       &nbsp;
+       <label>学号: </label>
+       <input  style="width:60px" name="s_id" type="text" value="<%=s_id%>">	
+       &nbsp;
        <input type="submit" name="sub" value="查询">
   </form> 
 		 <br><br>

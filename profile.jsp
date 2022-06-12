@@ -47,7 +47,7 @@
 <head>
     <title>个人中心</title>
         <base target="_self">
-    <%@ include file="common/header.html" %>
+    <%@ include file="common/header.jsp" %>
     </style>
 </head>
 

@@ -7,7 +7,7 @@
 <head>
     <title>场馆简介</title>
     <base target="_self">
-    <%@ include file="common/header.html" %>
+    <%@ include file="common/header.jsp" %>
     <style>
         table {
             /* border-collapse: collapse */

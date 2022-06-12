@@ -141,7 +141,7 @@
 <head>
     <title>体育场馆在线预约系统</title>
     <base target="_self">
-    <%@ include file="common/header.html" %>
+    <%@ include file="common/header.jsp" %>
 </head>
 
 <body>

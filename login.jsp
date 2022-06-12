@@ -87,84 +87,57 @@
 <head>
     <title>用户登录 </title>
     <base target="_self">
-    <%@ include file="common/header.html" %>
+    <%@ include file="common/header.jsp" %>
 </head>
 
 <body>
-    <div id="header">
-        <!-- <div id="logo">
-            <img src="images/logo.jpg" alt="中山大学">
-        </div> -->
-        <div id="version">
-            <a href="index.jsp">
-                <img src="images/header1.png" alt="体育场馆在线预约系统" border="0"></a>
-        </div>
-    </div>
-    <!--header end-->
-
-    <div id="nav">
-        <!-- <a href="index.htm"><span class="home">&nbsp;</span></a> -->
-        <a href="index.jsp"><span class="sp" id="tag2"
-                onmouseover="switchTag('tag2','subnav2');this.blur();">首页</span></a> |
-        <a href="booking-center.jsp"><span class="sp" id="tag3"
-                onmouseover="switchTag('tag3','subnav3');this.blur();">预订中心</span></a> |
-        <a href="introduction-center.jsp"><span class="sp" id="tag5"
-                onmouseover="switchTag('tag5','subnav5');this.blur();">场馆简介</span></a> |
-        <a href="announcement.jsp"><span class="sp" id="tag6"
-                onmouseover="switchTag('tag6','subnav6');this.blur();">通知公告</span></a> |
-        <a href="profile.jsp"><span class="sp" id="tag4"
-                onmouseover="switchTag('tag4','subnav4');this.blur();">个人中心</span></a>
-    </div>
-    <!--nav end-->
-
-
+    <main class="container">
+    </main>
     <div id="main">
-        <div id="mainbody" style="height: 400px;">
-            <div id="indexline" style="height: 400px; background-color: #FFFFFF;">
-                <fieldset id="filed" style="background-color: #03437b;">
-                    <form action="login.jsp" method="post">
-                        <p><label for="title" style="color: #FFFFFF; font-size: 24px;">学号: </label>
-                            <input name="id" type="text" maxlength=16 placeholder="请输入学号" value="${param.id}" onblur="" style="font-size: 24px;">
-                        </p>
-                        <p>
-                            &nbsp;
-                        </p>
-                        <p><label for="title" style="color: #FFFFFF; font-size: 24px;">姓名: </label>
-                            <input name="name" type="text" maxlength=20 placeholder="注册时请输入姓名" value="${param.name}" style="font-size: 24px;">
-                        </p>
-                        <p>
-                            &nbsp;
-                        </p>
-                        <p><label for="keywords" style="color: #FFFFFF; font-size: 24px;">密码: </label>
-                            <input name="pwd" type="password" maxlength=32 placeholder="请输入密码" value="${param.pwd}" style="font-size: 24px;">
-                        </p>
-                        <p>
-                            &nbsp;
-                        </p>
-                        <p>
-                            <button name="login" type="submit" value="登录" style="float: left;width: 240px;height: 36px;margin-left: 60px;font-size: 22px;">登录</button>
-                            <button name="register" type="submit" value="注册" style="float: right;width: 240px;height: 36px;margin-right: 30px;font-size: 22px;">注册</button>
-                        </p>
-                        <!-- TODO: use cookie to enable auto login -->
-                        <p>
-                            &nbsp;
-                        </p>
-                        <div style="margin-top: 30px; font-size: 22px; color: #FFFFFF">
-                            <%=rstable%><br>
-                            <%=msg%><br>
-                        </div>
-                        <!-- <input name="exit" type="submit" value="退出"> &nbsp;&nbsp; -->
-                        <!-- <button name="clear" type="reset" disabled>复位</button> </p> -->
-                    </form>
-                </fieldset>
-            </div>
-            
-            <!--mainbody end-->
-            
+        <div id="mainbody" style="">
+            <br/>
+            <h1>注册<h1/>
+            <form action="login.jsp" method="post">
+                <div class="grid">
+                    <label for="id">学号 <input type="text" id="firstname" name="firstname" placeholder="请输入学号" required=""></label> 
+                    <label for="name">姓名 <input type="text" id="lastname" name="lastname" placeholder="请输入姓名" required=""></label>
+                </div>
+                <label for="pwd">密码</label> <input type="password" id="email" name="email" placeholder="请输入密码" required="">
+                <label for="pwd">确认密码</label> <input type="password" id="email" name="email" placeholder="请再次输入密码" required="">
+                <small>Test.</small>
+                <button type="submit" aria-label="Example button" onclick="event.preventDefault()">Submit</button>
+            </form>
+            <%=rstable%><br>
+            <%=msg%><br>
+        <!--<fieldset id="filed">
+            <form action="login.jsp" method="post">
+                <p><label for="title" style="font-size: 24px;">学号: </label>
+                    <input name="id" type="text" maxlength=16 placeholder="请输入学号" value="${param.id}" onblur="" style="font-size: 24px;">
+                </p>
+                <p><label for="title" style="font-size: 24px;">姓名: </label>
+                    <input name="name" type="text" maxlength=20 placeholder="请输入姓名" value="${param.name}" style="font-size: 24px;">
+                </p>
+                <p><label for="keywords" style="font-size: 24px;">密码: </label>
+                    <input name="pwd" type="password" maxlength=32 placeholder="请输入密码" value="${param.pwd}" style="font-size: 24px;">
+                </p>
+                <p>
+                    &nbsp;
+                </p>
+                <p>
+                    <button name="login" type="submit" value="登录" style="float: left;width: 240px;height: 36px;margin-left: 60px;font-size: 22px;">登录</button>
+                    <button name="register" type="submit" value="注册" style="float: right;width: 240px;height: 36px;margin-right: 30px;font-size: 22px;">注册</button>
+                </p>
+                <p>
+                    &nbsp;
+                </p>
+                <div style="margin-top: 30px; font-size: 22px;">
+                    <%=rstable%><br>
+                    <%=msg%><br>
+                </div>
+            </form>
+        </fieldset> -->      
         </div>
         <!--mainbody end-->
-
-
     </div>
     <!--main end-->
 

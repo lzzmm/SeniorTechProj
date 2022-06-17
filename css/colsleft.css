@@ -1,13 +1,12 @@
 #mainbody .cols {
-    overflow: hidden;
+    overflow: auto;
 }
 
 #mainbody .colsleft {
     width: 998px;
     float: left;
-    overflow: hidden;
+    overflow: auto;
 }
-
 
 
 #mainbody .cols01 {

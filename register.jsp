@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*,java.sql.*" 
+﻿<%@ page language="java" import="java.util.*,java.sql.*" 
          contentType="text/html; charset=utf-8"
 %><%
 	request.setCharacterEncoding("utf-8");
@@ -16,35 +16,38 @@
 					+ "?autoReconnect=true&useUnicode=true"
 					+ "&characterEncoding=UTF-8"; 
 	String id = request.getParameter("id");
+    String name = request.getParameter("name");
     String pwd = request.getParameter("pwd");
     StringBuilder rstable = new StringBuilder("");
 	try{
-	  if(request.getParameter("login") != null) {
-		Class.forName("com.mysql.jdbc.Driver");
-		Connection con = DriverManager.getConnection(connectString, "user", "123");
-		PreparedStatement stmt=con.prepareStatement("select * from " + tableName + " where s_id = ? and password = ?");
+      if(request.getParameter("login") != null) {
+		response.sendRedirect("login.jsp");
+	  } // if(request.getParameter("login") != null)
+      if (request.getParameter("register") != null) {
+        Class.forName("com.mysql.jdbc.Driver");
+		Connection con=DriverManager.getConnection(connectString, "user", "123");
+		PreparedStatement stmt=con.prepareStatement("select * from " + tableName + " where s_id = ?");
         stmt.setString(1, id);
-        stmt.setString(2, pwd);
-        // using PreparedStatement 
-		//ResultSet rs=stmt.executeQuery("select * from " + tableName + " where id = '" + id + "' and pwd = '" + pwd + "'");
         ResultSet rs=stmt.executeQuery();
 		if (rs.next()) {
-            rstable.append("<text> 登录成功！</text>");
-            session.setAttribute("userid", rs.getString("s_id"));
-            session.setAttribute("username", rs.getString("name"));
-            response.sendRedirect("index.jsp");
+            rstable.append("<text>学号: " + rs.getString("s_id") + " 已存在！请登录！ </text>");
         } // if (rs.next())
-        else if (!(id == null || id.isEmpty() || pwd == null || pwd.isEmpty())){
-            rstable.append("<text> 学号或密码错误！</text>");
-        } else {
-            rstable.setLength(0);
-        }
+        else {
+            PreparedStatement stmt2=con.prepareStatement("insert into " + tableName + " (s_id, name, password) values (?, ?, ?)");
+            stmt2.setString(1, id);
+            stmt2.setString(2, name);
+            stmt2.setString(3, pwd);
+            stmt2.executeUpdate();
+		    stmt2.close();
+            rstable.append("<text> 学号：" + id + " 姓名：" + name + " 注册成功！</text>");
+            rstable.append("<text> 登录成功！</text>");
+            session.setAttribute("userid", id);
+            session.setAttribute("username", name);
+            response.sendRedirect("index.jsp");
+        } // else
 		rs.close();
 		stmt.close();
 		con.close();
-	  } // if(request.getParameter("login") != null)
-      if (request.getParameter("register") != null) {
-        response.sendRedirect("register.jsp");
       }
 	}
 	catch (Exception e){
@@ -54,7 +57,7 @@
 <meta charset="UTF-8">
 <html>
 <head>
-    <title>用户登录</title>
+    <title>用户注册</title>
     <base target="_self">
     <%@ include file="common/header.jsp" %>
 </head>
@@ -66,19 +69,21 @@
         <div id="mainbody">
         <div id="field">
             <br/>
-            <h1>登录<h1/>
-            <form action="login.jsp" method="post" id="form">
-                <label for="id">学号<input type="text" id="id" name="id" placeholder="请输入学号" pattern="\d*" title="Numbers only" required="" value="${param.id}"></label>
-                <label for="pwd">密码</label> <input type="password" id="pwd" name="pwd" placeholder="请输入密码" required="" value="${param.pwd}">
+            <h1>注册<h1/>
+            <form action="register.jsp" method="post">
+                <div class="grid">
+                    <label for="id">学号<input type="text" id="id" name="id" placeholder="请输入学号" pattern="\d*" title="Numbers only" required=""  value="${param.id}"></label> 
+                    <label for="name">姓名<input type="text" id="name" name="name" placeholder="请输入姓名" required=""  value="${param.name}"></label>
+                </div>
+                <label for="pwd">密码</label> <input type="password" id="pwd" name="pwd" placeholder="请输入密码" required="">
+                <label for="pwd">确认密码</label> <input type="password" id="repwd" name="repwd" placeholder="请再次输入密码" required="">
                 <label name="rs"><%=rstable%><%=msg%></label>  
-                <button name="login" id="login" type="submit" aria-label="Example button">登录</button>
-                <button name="register" type="submit" aria-label="Example button" onclick="location='register.jsp'">注册</button>
+                <button name="register" type="submit" aria-label="Example button">注册</button>
+                <button name="login" type="submit" aria-label="Example button" onclick="location='login.jsp'">已有账号</button>
             </form>
             <script>
-                var pass = document.getElementById("pwd");
+                var repass = document.getElementById("repwd");
                 var id = document.getElementById("id");
-                var rs = document.getElementById("rs");
-                var login = document.getElementById("form");
                 id.addEventListener("input",
                     function(e){
                         if(e.target.value.length < 5){
@@ -88,15 +93,19 @@
                             e.target.setCustomValidity("");
                         }
                 },false)
-                pass.addEventListener("input",
+                repass.addEventListener("input",
                     function(e){
+                        var pass = document.getElementById("pwd");
                         if(e.target.value.length < 6) {
                             e.target.setCustomValidity("密码不能少于6位！");
                         }
-                        else{
+                        else if(e.target.value===pass.value){
                             e.target.setCustomValidity("");
                         }
-                },false)                
+                        else{
+                            e.target.setCustomValidity("两次输入的密码不同！");
+                        }
+                },false)
             </script>
         <!--<fieldset id="filed">
             <form action="login.jsp" method="post">
@@ -124,10 +133,10 @@
                     <%=msg%><br>
                 </div>
             </form>
-        </fieldset> --> 
-        </div>
+        </fieldset> -->      
         </div>
         <!--mainbody end-->
+    </div>
     </div>
     <!--main end-->
 

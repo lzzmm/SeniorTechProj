@@ -147,11 +147,10 @@
 <body>
     <div id="main">
         <div id="mainbody" style="height: 550px;">
-            <div id="indexline" style="height: 550px; ">
-                <h1 id="secondheader">体育场馆在线预约系统</h1>
-
+        <main class="container">
+                <p><h1>在线预约</h1></p>
                 <form action="booking-center.jsp" method="post" name="f" id="inputbox">
-                    <label>场馆类型: </label>
+                    <label>场馆类型</label>
                     <select name="type">
                         <option value="badminton" <%=type.equals("badminton")?"selected":""%>>羽毛球场</option>
                         <option value="basketball" <%=type.equals("basketball")?"selected":""%>>篮球球场</option>
@@ -161,11 +160,12 @@
                         <option value="tennis" <%=type.equals("tennis")?"selected":""%>>网球场</option>
                      </select>
                      &nbsp;&nbsp;
-                    <label>日期: </label>
+                    <label>日期</label>
+                    年
                     <select name="year">
                         <option value="2022"  <%=year.equals("2022")?"selected":""%>>2022</option>
                      </select>
-                     年
+                     月
                      <select name="month">
                         <option value="01" <%=month.equals("01")?"selected":""%>>1</option>
                         <option value="02" <%=month.equals("02")?"selected":""%>>2</option>
@@ -180,7 +180,7 @@
                         <option value="11" <%=month.equals("11")?"selected":""%>>11</option>
                         <option value="12" <%=month.equals("12")?"selected":""%>>12</option>
                      </select>
-                     月
+                     日
                      <select name="day">
                         <option value="01" <%=day.equals("01")?"selected":""%>>1</option>
                         <option value="02" <%=day.equals("02")?"selected":""%>>2</option>
@@ -214,20 +214,15 @@
                         <option value="30" <%=day.equals("30")?"selected":""%>>30</option>
                         <option value="31" <%=day.equals("31")?"selected":""%>>31</option>
                      </select>
-                     日
+                     
                      &nbsp;&nbsp;
                      <input name="query" type="submit" value="查询">
                 </form> 
                 <p id="messagebox"> <%=msg%> </p><br>
                 <%=table%>
-
-            </div>
-            <!--mainbody end-->
-
+            </main>
         </div>
         <!--mainbody end-->
-
-
     </div>
     <!--main end-->
 

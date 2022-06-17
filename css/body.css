@@ -10,7 +10,7 @@ body {
 
 #mainbody {
     width: 998px;
-    height: 700px;
+/*    height: 700px;*/
     margin: 0px auto;
     padding: 2px;
 }
@@ -96,8 +96,6 @@ p {
 }
 
 #mainbody {
-    width: 600px;
-    height: 700px;
     margin: 0px auto;
     padding: 2px;
 }

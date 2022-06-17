@@ -63,7 +63,7 @@
     <main class="container">
     </main>
     <div id="main">
-        <div id="mainbody" style="">
+        <div id="mainbody">
             <br/>
             <h1>登录<h1/>
             <form action="login.jsp" method="post" id="form">

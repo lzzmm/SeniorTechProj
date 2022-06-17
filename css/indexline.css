@@ -24,3 +24,44 @@
     border: 0px solid #e6e4db;
     height: 300px;
 }
+
+#slideMain {
+    width: 930px;
+    height: 400px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.slide {
+    width: 930px;
+    height: 618px;
+    float: left;
+}
+
+.slides {
+    width: 4650px;
+    animation: myfirst ease-in-out infinite;
+    animation-duration: 10s;
+}
+
+@keyframes myfirst {
+    0% {
+        margin-left: 0px;
+    }
+
+    25% {
+        margin-left: -930px;
+    }
+
+    50% {
+        margin-left: -1860px;
+    }
+
+    75% {
+        margin-left: -2790px;
+    }
+
+    100% {
+        margin-left: -3720px;
+    }
+}

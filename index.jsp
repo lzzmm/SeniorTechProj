@@ -30,22 +30,30 @@
     <%@ include file="common/header.jsp" %>
 </head>
 
-<body>
+<body style="overflow:auto;">
     <div id="main">
         <div id="mainbody">
-            <div id="mainbody">
-                <div id="indexline">
+                <!--<div id="indexline">
                     <div id="box">
-                        <img src="images/basketball.jpg" alt="篮球场" width="228" height="300">
+                        <img src="images/basketball.jpg" alt="篮球场" width="228" height="300" >
                     </div>
                     <div id="content_main">
-                        <!-- <a href="zdgk/zdgk08/tuzwq/tuzwq2015/tu201503/index.htm" target="_blank" title="蝶之绘"> -->
                         <a>
                             <img src="images/badminton.jpeg" alt="羽毛球场" width="770" height="300">
                         </a>
                     </div>
-                </div>
+                </div>-->
                 <!-- indexline end -->
+                
+                <div id="slideMain">
+                    <div class="slides">
+                        <img class="slide" src="images/basketball.jpg">
+                        <img class="slide" src="images/badminton.jpeg">
+                        <img class="slide" src="images/basketball.jpg">
+                        <img class="slide" src="images/badminton.jpeg">
+                        <img class="slide" src="images/basketball.jpg">
+                    </div>
+                </div>
 
                 <div class="cols">
                     <div class="colsleft">
@@ -156,9 +164,6 @@
                 <!-- cols end -->
             </div>
             <!--mainbody end-->
-
-        </div>
-        <!--mainbody end-->
 
 
     </div>

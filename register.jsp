@@ -76,7 +76,7 @@
                     <label for="name">姓名<input type="text" id="name" name="name" placeholder="请输入姓名" required=""  value="${param.name}"></label>
                 </div>
                 <label for="pwd">密码</label> <input type="password" id="pwd" name="pwd" placeholder="请输入密码" required="">
-                <label for="pwd">确认密码</label> <input type="password" id="repwd" name="repwd" placeholder="请再次输入密码" required="">
+                <label for="pwd">确认密码</label> <input type="password" id="repwd" name="repwd" placeholder="请重复密码" required="">
                 <label name="rs"><%=rstable%><%=msg%></label>  
                 <button name="register" type="submit" aria-label="Example button">注册</button>
                 <button name="login" type="submit" aria-label="Example button" onclick="location='login.jsp'">已有账号</button>

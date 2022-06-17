@@ -64,6 +64,7 @@
     </main>
     <div id="main">
         <div id="mainbody">
+        <div id="field">
             <br/>
             <h1>登录<h1/>
             <form action="login.jsp" method="post" id="form">
@@ -123,7 +124,8 @@
                     <%=msg%><br>
                 </div>
             </form>
-        </fieldset> -->      
+        </fieldset> --> 
+        </div>
         </div>
         <!--mainbody end-->
     </div>

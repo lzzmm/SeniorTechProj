@@ -66,7 +66,8 @@
     <main class="container">
     </main>
     <div id="main">
-        <div id="mainbody" style="">
+        <div id="mainbody">
+        <div id="field">
             <br/>
             <h1>注册<h1/>
             <form action="register.jsp" method="post">
@@ -135,6 +136,7 @@
         </fieldset> -->      
         </div>
         <!--mainbody end-->
+    </div>
     </div>
     <!--main end-->
 

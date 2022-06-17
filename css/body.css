@@ -10,7 +10,9 @@ body {
 
 #mainbody {
     width: 998px;
-/*    height: 700px;*/
+    height: 100%;
+    min-height: 720px;
+    max-height: 100%;
     margin: 0px auto;
     padding: 2px;
 }
@@ -46,9 +48,10 @@ fieldset {
 }
 
 #field {
-    width: 200px;
-    height: 150px;
-    text-align: center;
+    width: 500px;
+    min-height: 720px;
+    max-height: 1200px;
+    margin: auto;
 }
 
 #field_table {
@@ -89,13 +92,14 @@ p {
 
 #main {
     background-color: #FFFFFF;
-    overflow: hidden;
+    overflow: auto;
     padding: 0px 0px 5px 0px;
     min-height: 100%;
     /*    margin: 0 auto -105px;*/
 }
 
 #mainbody {
+    height: 100%;
     margin: 0px auto;
     padding: 2px;
 }
@@ -122,4 +126,5 @@ p {
     margin: 0px auto;
     word-spacing: 6px;
 }
+
 /* frame end */

@@ -35,6 +35,7 @@
     }
     else if(s_id == null){
         msg="用户未登录";
+        // response.sendRedirect("login.jsp");
     }
     else{
         if(type.equals("badminton")){
@@ -215,7 +216,7 @@
         #messagebox{
             margin: 20px 0 0 0;
             text-align: center;
-            color: #FFF;
+            color: #000;
             font-size: 25px;
         }
 
@@ -226,38 +227,15 @@
 <body>
     <div id="main">
         <div id="mainbody" style="height: 550px;">
-            <div id="indexline" style="height: 550px; ">
                 <h1 id="secondheader">体育场馆在线预约系统</h1>
                 <br>
                 <p id="messagebox"> <%=msg%> </p>
 
             </div>
             <!--mainbody end-->
-
-        </div>
-        <!--mainbody end-->
-
-
     </div>
     <!--main end-->
-
-    <div id="footer">
-        <!-- <div class="bottomlogo">
-            <img src="images/logo-bottom.jpg">
-        </div> -->
-        <div class="bottomcontact_cn">通讯地址: GZ市大山中学体育馆 邮编: 111111<br>
-            电话: 020-7777-7777</div>
-        <div class="bottomcontact_en">
-            Address: Big Mountain Middle School Gym, GZ市, 111111, P. R. China<br>
-            TEL: +86-20-84112828
-        </div>
-        <div class="clear"></div>
-        <div class="copyright">大山中学版权所有 COPYRIGHT &copy; 1573 - 2022 , BMSG - <a href="#">联系我们</a> - <a
-                href="#">网站地图</a>
-            -
-            <a href="#">粤ICP备12345678号</a>
-        </div>
-    </div>
+    <%@ include file="common/footer.html" %>
     <!--footer end-->
 
 </body>

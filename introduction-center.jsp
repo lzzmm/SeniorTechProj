@@ -30,12 +30,16 @@
     </style>
 </head>
 
-<body link="#FFFFFF" alink="FFFFFF" vlink="FFFFFF">
+<body>
     <div id="main">
         <div id="mainbody">
-            <div id="indexline" style="height: 400px;">
-                <table border="1">
-                    <caption>场馆简介</caption>
+        <main class="container">
+        <p>
+        <h1>场馆简介</h1>
+        </p>
+        <section>
+            <figure>
+                <table>
                     <thead>
                         <tr>
                             <th>场馆</th>
@@ -71,12 +75,12 @@
                             <td>网球场</td>
                             <td><a href="introduction-tennis.html">点此查看</a></td>
                         </tr>
-
                     </tbody>
                 </table>
-            </div>
+            </figure>
+            </section>
             <!--mainbody end-->
-
+            </main>
         </div>
         <!--mainbody end-->
 

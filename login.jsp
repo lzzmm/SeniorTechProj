@@ -72,7 +72,7 @@
                 <label for="pwd">密码</label> <input type="password" id="pwd" name="pwd" placeholder="请输入密码" required="" value="${param.pwd}">
                 <label name="rs"><%=rstable%><%=msg%></label>  
                 <button name="login" id="login" type="submit" aria-label="Example button">登录</button>
-                <button name="register" type="submit" aria-label="Example button" onclick="location='register.jsp'">注册</button>
+                <button name="register" type="submit" aria-label="Example button" class="secondary" onclick="location='register.jsp'">注册</button>
             </form>
             <script>
                 var pass = document.getElementById("pwd");
@@ -86,6 +86,7 @@
                         }
                         else{
                             e.target.setCustomValidity("");
+                            //e.target.attr("aria-invalid","true")
                         }
                 },false)
                 pass.addEventListener("input",

@@ -8,6 +8,7 @@
     String month  = "";
     String day = "";
     String type = "";
+    String itype = "";
 
     int showTable = 1;
     int max = 0;
@@ -19,6 +20,11 @@
 					+ "&characterEncoding=UTF-8"; 
 
     StringBuilder table=new StringBuilder("");
+
+    itype = request.getParameter("itype");
+    if(itype!=null){
+        type=itype;
+    }
 		
 	if(request.getParameter("query") != null){
 
@@ -49,9 +55,6 @@
             msg="日期已失效，请提前一天进行预约";
             showTable=0;
         }
-
-        
-
 
         if(showTable==1){
 
@@ -96,8 +99,8 @@
 		Connection con = DriverManager.getConnection(connectString, "user", "123");
         PreparedStatement stmt=con.prepareStatement(s);
 
-        table.append("<table border= '1'>");
-        table.append("<tr><th>时间段</th><th>剩余数量</th><th>操作</th></tr>");
+        table.append("<table role=\"grid\">");
+        table.append("<thead><tr><th>时间段</th><th>剩余数量</th><th>操作</th></tr></thead>");
         
         for(int i=0;i<timenum;i++){
         table.append("<tr><td>"+timearray[timeindex][i]+"</td>");
@@ -142,6 +145,25 @@
     <title>体育场馆在线预约系统</title>
     <base target="_self">
     <%@ include file="common/header.jsp" %>
+    <style>
+        form{
+            float:left;
+        }
+        table{
+            float:right;
+            width: 500px;
+            
+        }
+        th,td{
+            text-align: center;
+        }
+        #full{
+            color: grey;
+        }
+        #messagebox{
+            text-align: center;
+        }
+    </style>
 </head>
 
 <body>
@@ -159,66 +181,63 @@
                         <option value="table-tennis" <%=type.equals("table-tennis")?"selected":""%>>乒乓球场</option>
                         <option value="tennis" <%=type.equals("tennis")?"selected":""%>>网球场</option>
                      </select>
-                     &nbsp;&nbsp;
+                     &nbsp;
                     <label>日期</label>
-                    年
                     <select name="year">
-                        <option value="2022"  <%=year.equals("2022")?"selected":""%>>2022</option>
+                        <option value="2022"  <%=year.equals("2022")?"selected":""%>>2022年</option>
                      </select>
-                     月
                      <select name="month">
-                        <option value="01" <%=month.equals("01")?"selected":""%>>1</option>
-                        <option value="02" <%=month.equals("02")?"selected":""%>>2</option>
-                        <option value="03" <%=month.equals("03")?"selected":""%>>3</option>
-                        <option value="04" <%=month.equals("04")?"selected":""%>>4</option>
-                        <option value="05" <%=month.equals("05")?"selected":""%>>5</option>
-                        <option value="06" <%=month.equals("06")?"selected":""%>>6</option>
-                        <option value="07" <%=month.equals("07")?"selected":""%>>7</option>
-                        <option value="08" <%=month.equals("08")?"selected":""%>>8</option>
-                        <option value="09" <%=month.equals("09")?"selected":""%>>9</option>
-                        <option value="10" <%=month.equals("10")?"selected":""%>>10</option>
-                        <option value="11" <%=month.equals("11")?"selected":""%>>11</option>
-                        <option value="12" <%=month.equals("12")?"selected":""%>>12</option>
+                        <option value="01" <%=month.equals("01")?"selected":""%>>1月</option>
+                        <option value="02" <%=month.equals("02")?"selected":""%>>2月</option>
+                        <option value="03" <%=month.equals("03")?"selected":""%>>3月</option>
+                        <option value="04" <%=month.equals("04")?"selected":""%>>4月</option>
+                        <option value="05" <%=month.equals("05")?"selected":""%>>5月</option>
+                        <option value="06" <%=month.equals("06")?"selected":""%>>6月</option>
+                        <option value="07" <%=month.equals("07")?"selected":""%>>7月</option>
+                        <option value="08" <%=month.equals("08")?"selected":""%>>8月</option>
+                        <option value="09" <%=month.equals("09")?"selected":""%>>9月</option>
+                        <option value="10" <%=month.equals("10")?"selected":""%>>10月</option>
+                        <option value="11" <%=month.equals("11")?"selected":""%>>11月</option>
+                        <option value="12" <%=month.equals("12")?"selected":""%>>12月</option>
                      </select>
-                     日
                      <select name="day">
-                        <option value="01" <%=day.equals("01")?"selected":""%>>1</option>
-                        <option value="02" <%=day.equals("02")?"selected":""%>>2</option>
-                        <option value="03" <%=day.equals("03")?"selected":""%>>3</option>
-                        <option value="04" <%=day.equals("04")?"selected":""%>>4</option>
-                        <option value="05" <%=day.equals("05")?"selected":""%>>5</option>
-                        <option value="06" <%=day.equals("06")?"selected":""%>>6</option>
-                        <option value="07" <%=day.equals("07")?"selected":""%>>7</option>
-                        <option value="08" <%=day.equals("08")?"selected":""%>>8</option>
-                        <option value="09" <%=day.equals("09")?"selected":""%>>9</option>
-                        <option value="10" <%=day.equals("10")?"selected":""%>>10</option>
-                        <option value="11" <%=day.equals("11")?"selected":""%>>11</option>
-                        <option value="12" <%=day.equals("12")?"selected":""%>>12</option>
-                        <option value="13" <%=day.equals("13")?"selected":""%>>13</option>
-                        <option value="14" <%=day.equals("14")?"selected":""%>>14</option>
-                        <option value="15" <%=day.equals("15")?"selected":""%>>15</option>
-                        <option value="16" <%=day.equals("16")?"selected":""%>>16</option>
-                        <option value="17" <%=day.equals("17")?"selected":""%>>17</option>
-                        <option value="18" <%=day.equals("18")?"selected":""%>>18</option>
-                        <option value="19" <%=day.equals("19")?"selected":""%>>19</option>
-                        <option value="20" <%=day.equals("20")?"selected":""%>>20</option>
-                        <option value="21" <%=day.equals("21")?"selected":""%>>21</option>
-                        <option value="22" <%=day.equals("22")?"selected":""%>>22</option>
-                        <option value="23" <%=day.equals("23")?"selected":""%>>23</option>
-                        <option value="24" <%=day.equals("24")?"selected":""%>>24</option>
-                        <option value="25" <%=day.equals("25")?"selected":""%>>25</option>
-                        <option value="26" <%=day.equals("26")?"selected":""%>>26</option>
-                        <option value="27" <%=day.equals("27")?"selected":""%>>27</option>
-                        <option value="28" <%=day.equals("28")?"selected":""%>>28</option>
-                        <option value="29" <%=day.equals("29")?"selected":""%>>29</option>
-                        <option value="30" <%=day.equals("30")?"selected":""%>>30</option>
-                        <option value="31" <%=day.equals("31")?"selected":""%>>31</option>
+                        <option value="01" <%=day.equals("01")?"selected":""%>>1日</option>
+                        <option value="02" <%=day.equals("02")?"selected":""%>>2日</option>
+                        <option value="03" <%=day.equals("03")?"selected":""%>>3日</option>
+                        <option value="04" <%=day.equals("04")?"selected":""%>>4日</option>
+                        <option value="05" <%=day.equals("05")?"selected":""%>>5日</option>
+                        <option value="06" <%=day.equals("06")?"selected":""%>>6日</option>
+                        <option value="07" <%=day.equals("07")?"selected":""%>>7日</option>
+                        <option value="08" <%=day.equals("08")?"selected":""%>>8日</option>
+                        <option value="09" <%=day.equals("09")?"selected":""%>>9日</option>
+                        <option value="10" <%=day.equals("10")?"selected":""%>>10日</option>
+                        <option value="11" <%=day.equals("11")?"selected":""%>>11日</option>
+                        <option value="12" <%=day.equals("12")?"selected":""%>>12日</option>
+                        <option value="13" <%=day.equals("13")?"selected":""%>>13日</option>
+                        <option value="14" <%=day.equals("14")?"selected":""%>>14日</option>
+                        <option value="15" <%=day.equals("15")?"selected":""%>>15日</option>
+                        <option value="16" <%=day.equals("16")?"selected":""%>>16日</option>
+                        <option value="17" <%=day.equals("17")?"selected":""%>>17日</option>
+                        <option value="18" <%=day.equals("18")?"selected":""%>>18日</option>
+                        <option value="19" <%=day.equals("19")?"selected":""%>>19日</option>
+                        <option value="20" <%=day.equals("20")?"selected":""%>>20日</option>
+                        <option value="21" <%=day.equals("21")?"selected":""%>>21日</option>
+                        <option value="22" <%=day.equals("22")?"selected":""%>>22日</option>
+                        <option value="23" <%=day.equals("23")?"selected":""%>>23日</option>
+                        <option value="24" <%=day.equals("24")?"selected":""%>>24日</option>
+                        <option value="25" <%=day.equals("25")?"selected":""%>>25日</option>
+                        <option value="26" <%=day.equals("26")?"selected":""%>>26日</option>
+                        <option value="27" <%=day.equals("27")?"selected":""%>>27日</option>
+                        <option value="28" <%=day.equals("28")?"selected":""%>>28日</option>
+                        <option value="29" <%=day.equals("29")?"selected":""%>>29日</option>
+                        <option value="30" <%=day.equals("30")?"selected":""%>>30日</option>
+                        <option value="31" <%=day.equals("31")?"selected":""%>>31日</option>
                      </select>
-                     
-                     &nbsp;&nbsp;
+                     &nbsp;
                      <input name="query" type="submit" value="查询">
                 </form> 
                 <p id="messagebox"> <%=msg%> </p><br>
+                
                 <%=table%>
             </main>
         </div>

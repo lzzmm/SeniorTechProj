@@ -116,23 +116,23 @@
                                     <div id="newslist03">
                                         <ul id="xsyg01">
                                             <li>
-                                                <a href="booking-badminton.jsp" target="_blank" title="羽毛球场">羽毛球场</a>
+                                                <a href="booking-center.jsp?itype=badminton" target="_blank" title="羽毛球场">羽毛球场</a>
                                             </li>
                                             <li>
-                                                <a href="booking-basketball.jsp" target="_blank" title="篮球场">
+                                                <a href="booking-center.jsp?itype=basketball" target="_blank" title="篮球场">
                                                     篮球场
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="booking-table-tennis.jsp" target="_blank"
+                                                <a href="booking-center.jsp?itype=table-tennis" target="_blank"
                                                    title="乒乓球场">乒乓球场</a>
                                             </li>
-                                            <li><a href="booking-swimming.jsp" target="_blank" title="游泳馆">游泳馆</a></li>
+                                            <li><a href="booking-center.jsp?itype=swimming" target="_blank" title="游泳馆">游泳馆</a></li>
                                             <li>
-                                                <a href="booking-football.jsp" target="_blank" title="足球场">足球场</a>
+                                                <a href="booking-center.jsp?itype=football" target="_blank" title="足球场">足球场</a>
                                             </li>
                                             <li>
-                                                <a href="booking-tennis.jsp" target="_blank" title="网球场">网球场</a>
+                                                <a href="booking-center.jsp?itype=tennis" target="_blank" title="网球场">网球场</a>
                                             </li>
                                         </ul>
                                     </div>

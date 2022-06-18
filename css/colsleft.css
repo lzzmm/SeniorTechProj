@@ -1,5 +1,5 @@
 #mainbody .cols {
-    overflow: auto;
+    overflow: hidden;
 }
 
 #mainbody .colsleft {

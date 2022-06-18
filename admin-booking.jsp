@@ -20,7 +20,7 @@
     if(userid == null){
         msg="用户未登录";
     }
-    else if(!userid.equals("admin")){
+    else if(!userid.equals("000000")){
         msg="权限不足";
     }
     else{

@@ -68,7 +68,8 @@
             <br/>
             <h1>登录<h1/>
             <form action="login.jsp" method="post" id="form">
-                <label for="id">学号<input type="text" id="id" name="id" placeholder="请输入学号" pattern="\d*" title="Numbers only" required="" value="${param.id}"></label>
+                <!--<label for="id">学号<input type="text" id="id" name="id" placeholder="请输入学号" pattern="\d*" title="Numbers only" required="" value="${param.id}"></label>-->
+                <label for="id">学号<input type="text" id="id" name="id" placeholder="请输入学号" required="" value="${param.id}"></label>
                 <label for="pwd">密码</label> <input type="password" id="pwd" name="pwd" placeholder="请输入密码" required="" value="${param.pwd}">
                 <label name="rs"><%=rstable%><%=msg%></label>  
                 <button name="login" id="login" type="submit" aria-label="Example button">登录</button>
@@ -82,7 +83,7 @@
                 id.addEventListener("input",
                     function(e){
                         if(e.target.value.length < 5){
-                            e.target.setCustomValidity("学号不能少于5位数！");
+                            e.target.setCustomValidity("学号不能少于5位！");
                         }
                         else{
                             e.target.setCustomValidity("");
@@ -91,8 +92,8 @@
                 },false)
                 pass.addEventListener("input",
                     function(e){
-                        if(e.target.value.length < 6) {
-                            e.target.setCustomValidity("密码不能少于6位！");
+                        if(e.target.value.length < 3) {
+                            e.target.setCustomValidity("密码不能少于3位！");
                         }
                         else{
                             e.target.setCustomValidity("");

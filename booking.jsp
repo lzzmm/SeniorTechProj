@@ -34,7 +34,7 @@
         msg="内部错误";
     }
     else if(s_id == null){
-        msg="用户未登录";
+        msg="用户未<a href='login.jsp'>登录</a>";
         // response.sendRedirect("login.jsp");
     }
     else{

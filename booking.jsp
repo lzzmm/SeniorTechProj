@@ -122,115 +122,21 @@
     <title>体育场馆在线预约系统</title>
     <%@ include file="common/header.jsp" %>
     <style>
-        table {
-            /* border-collapse: collapse */
-            border-color: #FFFFFF;
-            color: #FFF;
-            margin: 0 auto;
-        }
-
-        td,
-        th {
-            height: 40px;
-            width: 240px;
-            text-align: center
-        }
-
-        caption {
-            font-size: 20px;
-            font-weight: bold;
-        }
 
         p {
-            margin: 0px;
-            padding: 0px;
-        }
-
-        /* frame */
-        #header {
-            /*width: 998px;*/
-            height: 108px;
-
-            margin: 0px auto;
-            position: relative;
-            padding: 0px;
-        }
-
-        #subnav {
-            width: 998px;
-            height: 41px;
-
-            font-size: 13px;
-            margin: 0 auto;
-            text-align: left;
-            color: #006600;
-            line-height: 40px;
-        }
-
-        #main {
-            background-color: #FFFFFF;
-
-            overflow: hidden;
-            padding: 0px 0px 5px 0px;
-        }
-
-        #quicklinks {
-            width: 998px;
-            height: 20px;
-
-            font-size: 14px;
-            color: #000000;
-            background: #D1D1D1;
-
-            padding: 12px 0px 7px 0px;
-            margin: 0px auto;
-            word-spacing: 5px;
-            font-weight: bold;
-        }
-
-        #sublinks {
-            width: 958px;
-            height: 20px;
-
-            font-size: 12px;
-            color: #000000;
-            background: #D1D1D1;
-
-            padding: 10px 20px;
-            margin: 0px auto;
-            word-spacing: 6px;
-        }
-
-
-        #footer {
-            width: 958px;
-            height: 85px;
-            font-size: 12px;
-            color: #FFFFFF;
-
-            padding: 20px 20px;
-            margin: 0px auto;
-            height: 105px;
-        }
-
-        #messagebox{
-            margin: 20px 0 0 0;
             text-align: center;
-            color: #000;
-            font-size: 25px;
         }
 
-        /* frame end */
     </style>
 </head>
 
 <body>
     <div id="main">
         <div id="mainbody" style="height: 550px;">
-                <h1 id="secondheader">体育场馆在线预约系统</h1>
+                <p><h1 id="secondheader">在线预约</h1></p>
                 <br>
                 <p id="messagebox"> <%=msg%> </p>
-
+                <p><a href="index.jsp">返回首页</a></p>
             </div>
             <!--mainbody end-->
     </div>
